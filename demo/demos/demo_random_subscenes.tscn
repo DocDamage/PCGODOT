@@ -6,6 +6,10 @@
 [ext_resource type="Resource" uid="uid://duluelvd82ocy" path="res://demos/totem_data.tres" id="3_y3m1v"]
 [ext_resource type="Script" uid="uid://co0f3ugd2wj1y" path="res://addons/flow_nodes_editor/graph_input_parameter.gd" id="5_rmfun"]
 [ext_resource type="Script" uid="uid://j6vjeb5cjjoy" path="res://addons/flow_nodes_editor/flow_graph_resource.gd" id="6_4rrgr"]
+[ext_resource type="PackedScene" uid="uid://b6q4l56g02tqn" path="res://scenes/scene_3p.tscn" id="7_rmfun"]
+[ext_resource type="Script" uid="uid://dbtbo3vh5nl2c" path="res://scenes/scene_3p.gd" id="8_4rrgr"]
+[ext_resource type="PackedScene" uid="uid://bhacwufn13rf6" path="res://scenes/totem.tscn" id="9_djsgy"]
+[ext_resource type="Script" uid="uid://dqajkneld6h6" path="res://scenes/totem.gd" id="10_3b5bf"]
 
 [sub_resource type="Curve3D" id="Curve3D_pkeol"]
 bake_interval = 2.0
@@ -273,3 +277,103 @@ curve = SubResource("Curve3D_pkeol")
 script = ExtResource("1_y3m1v")
 graph = SubResource("Resource_1kchh")
 refresh_inputs = Callable()
+
+[node name="Scene_0000" type="Node3D" parent="FlowGraphNode3D" unique_id=1517714577 instance=ExtResource("7_rmfun")]
+transform = Transform3D(-1.9041591, 0, -0.6117012, 0, 2, 0, 0.6117012, 0, -1.9041591, 0, 0, 0)
+script = ExtResource("8_4rrgr")
+metadata/flow_owner = &"id_0007_spawn_scenes"
+
+[node name="Scene_0001" type="Node3D" parent="FlowGraphNode3D" unique_id=142542125 instance=ExtResource("7_rmfun")]
+transform = Transform3D(-1.9790518, 0, -0.2887105, 0, 2, 0, 0.2887105, 0, -1.9790518, 2.5, 0, 1.25)
+script = ExtResource("8_4rrgr")
+metadata/flow_owner = &"id_0007_spawn_scenes"
+
+[node name="Scene_0002" type="Node3D" parent="FlowGraphNode3D" unique_id=1806913084 groups=["totem"] instance=ExtResource("9_djsgy")]
+transform = Transform3D(-0.72346944, 0, -1.8645622, 0, 2, 0, 1.8645622, 0, -0.72346944, 3.75, 0, 1.875)
+script = ExtResource("10_3b5bf")
+metadata/flow_owner = &"id_0007_spawn_scenes"
+
+[node name="Scene_0003" type="Node3D" parent="FlowGraphNode3D" unique_id=1777086373 groups=["totem"] instance=ExtResource("9_djsgy")]
+transform = Transform3D(-0.1841941, 0, -1.9915, 0, 2, 0, 1.9915, 0, -0.1841941, 5, 0, 2.5)
+script = ExtResource("10_3b5bf")
+metadata/flow_owner = &"id_0007_spawn_scenes"
+
+[node name="Scene_0004" type="Node3D" parent="FlowGraphNode3D" unique_id=2050783413 groups=["totem"] instance=ExtResource("9_djsgy")]
+transform = Transform3D(-1.8705617, 0, -0.70781285, 0, 2, 0, 0.70781285, 0, -1.8705617, 6.25, 0, 3.125)
+script = ExtResource("10_3b5bf")
+metadata/flow_owner = &"id_0007_spawn_scenes"
+
+[node name="Scene_0005" type="Node3D" parent="FlowGraphNode3D" unique_id=2102233634 groups=["totem"] instance=ExtResource("9_djsgy")]
+transform = Transform3D(-1.9079475, 0, -0.5997803, 0, 2, 0, 0.5997803, 0, -1.9079475, 9.999999, 0, 4.9999995)
+script = ExtResource("10_3b5bf")
+metadata/flow_owner = &"id_0007_spawn_scenes"
+
+[node name="Scene_0006" type="Node3D" parent="FlowGraphNode3D" unique_id=571347211 instance=ExtResource("7_rmfun")]
+transform = Transform3D(-1.4058148, 0, -1.4225628, 0, 2, 0, 1.4225628, 0, -1.4058148, 12.499999, 0, 3.7500005)
+script = ExtResource("8_4rrgr")
+metadata/flow_owner = &"id_0007_spawn_scenes"
+
+[node name="Scene_0007" type="Node3D" parent="FlowGraphNode3D" unique_id=92749404 instance=ExtResource("7_rmfun")]
+transform = Transform3D(-1.8874645, 0, 0.66142094, 0, 2, 0, -0.66142094, 0, -1.8874645, 13.749998, 0, 3.125001)
+script = ExtResource("8_4rrgr")
+metadata/flow_owner = &"id_0007_spawn_scenes"
+
+[node name="Scene_0008" type="Node3D" parent="FlowGraphNode3D" unique_id=311927635 instance=ExtResource("7_rmfun")]
+transform = Transform3D(-1.974672, 0, -0.31728622, 0, 2, 0, 0.31728622, 0, -1.974672, 14.999998, 0, 2.500001)
+script = ExtResource("8_4rrgr")
+metadata/flow_owner = &"id_0007_spawn_scenes"
+
+[node name="Scene_0009" type="Node3D" parent="FlowGraphNode3D" unique_id=585632528 instance=ExtResource("7_rmfun")]
+transform = Transform3D(-0.30879274, 0, -1.976018, 0, 2, 0, 1.976018, 0, -0.30879274, 16.249998, 0, 1.8750007)
+script = ExtResource("8_4rrgr")
+metadata/flow_owner = &"id_0007_spawn_scenes"
+
+[node name="Scene_0010" type="Node3D" parent="FlowGraphNode3D" unique_id=959074125 groups=["totem"] instance=ExtResource("9_djsgy")]
+transform = Transform3D(-1.024199, 0, -1.7178522, 0, 2, 0, 1.7178522, 0, -1.024199, 21.25, 0, -0.62499964)
+script = ExtResource("10_3b5bf")
+metadata/flow_owner = &"id_0007_spawn_scenes"
+
+[node name="Scene_0011" type="Node3D" parent="FlowGraphNode3D" unique_id=1238485224 groups=["totem"] instance=ExtResource("9_djsgy")]
+transform = Transform3D(-0.40740994, 0, -1.9580647, 0, 2, 0, 1.9580647, 0, -0.40740994, 22.5, 0, -1.2499999)
+script = ExtResource("10_3b5bf")
+metadata/flow_owner = &"id_0007_spawn_scenes"
+
+[node name="Scene_0012" type="Node3D" parent="FlowGraphNode3D" unique_id=515117179 instance=ExtResource("7_rmfun")]
+transform = Transform3D(-0.5698082, 0, 1.917112, 0, 2, 0, -1.917112, 0, -0.5698082, 23.749998, 0, -1.874999)
+script = ExtResource("8_4rrgr")
+metadata/flow_owner = &"id_0007_spawn_scenes"
+
+[node name="Scene_0013" type="Node3D" parent="FlowGraphNode3D" unique_id=1534784474 instance=ExtResource("7_rmfun")]
+transform = Transform3D(-1.7007304, 0, 1.0523859, 0, 2, 0, -1.0523859, 0, -1.7007304, 26.249998, 0, -3.1249993)
+script = ExtResource("8_4rrgr")
+metadata/flow_owner = &"id_0007_spawn_scenes"
+
+[node name="Scene_0014" type="Node3D" parent="FlowGraphNode3D" unique_id=1961025950 groups=["totem"] instance=ExtResource("9_djsgy")]
+transform = Transform3D(-1.9988608, 0, -0.06749189, 0, 2, 0, 0.06749189, 0, -1.9988608, 27.499996, 0, -3.7499986)
+script = ExtResource("10_3b5bf")
+metadata/flow_owner = &"id_0007_spawn_scenes"
+
+[node name="Scene_0015" type="Node3D" parent="FlowGraphNode3D" unique_id=1491610632 instance=ExtResource("7_rmfun")]
+transform = Transform3D(-1.2709494, 0, 1.5442435, 0, 2, 0, -1.5442435, 0, -1.2709494, 28.749998, 0, -4.3749995)
+script = ExtResource("8_4rrgr")
+metadata/flow_owner = &"id_0007_spawn_scenes"
+
+[node name="Scene_0016" type="Node3D" parent="FlowGraphNode3D" unique_id=12476233 instance=ExtResource("7_rmfun")]
+transform = Transform3D(-0.75483215, 0, -1.8520876, 0, 2, 0, 1.8520876, 0, -0.75483215, 29.999996, 0, -4.999998)
+script = ExtResource("8_4rrgr")
+metadata/flow_owner = &"id_0007_spawn_scenes"
+
+[node name="Scene_0017" type="Node3D" parent="FlowGraphNode3D" unique_id=1058205613 groups=["totem"] instance=ExtResource("9_djsgy")]
+transform = Transform3D(-0.2629634, 0, -1.9826372, 0, 2, 0, 1.9826372, 0, -0.2629634, 34.999996, 0, -2.5000017)
+script = ExtResource("10_3b5bf")
+metadata/flow_owner = &"id_0007_spawn_scenes"
+
+[node name="Scene_0018" type="Node3D" parent="FlowGraphNode3D" unique_id=1225885126 instance=ExtResource("7_rmfun")]
+transform = Transform3D(-1.9048606, 0, 0.609513, 0, 2, 0, -0.609513, 0, -1.9048606, 36.25, 0, -1.8750005)
+script = ExtResource("8_4rrgr")
+metadata/flow_owner = &"id_0007_spawn_scenes"
+
+[node name="Scene_0019" type="Node3D" parent="FlowGraphNode3D" unique_id=419155620 groups=["totem"] instance=ExtResource("9_djsgy")]
+transform = Transform3D(-1.9908975, 0, -0.19059616, 0, 2, 0, 0.19059616, 0, -1.9908975, 38.750004, 0, -0.624999)
+script = ExtResource("10_3b5bf")
+metadata/flow_owner = &"id_0007_spawn_scenes"

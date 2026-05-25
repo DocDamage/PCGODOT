@@ -110,6 +110,7 @@ data = {
 "position": Vector2(1140, 380),
 "settings": {
 "cte_bool": false,
+"cte_color": Color(1, 1, 1, 1),
 "cte_float": 0.91,
 "cte_int": 0,
 "cte_resource": null,
@@ -361,6 +362,7 @@ data = {
 "position": Vector2(0, 180),
 "settings": {
 "cte_bool": false,
+"cte_color": Color(1, 1, 1, 1),
 "cte_float": 0.205,
 "cte_int": 0,
 "cte_resource": null,
@@ -492,9 +494,12 @@ data = {
 "disabled": false,
 "distance_attribute": "distance",
 "fill_curve": false,
+"fill_mode": 0,
 "inspect_enabled": false,
+"num_random_samples": 10,
 "random_seed": 1898294421,
 "sample_segments_centers": false,
+"sampling_mode": 0,
 "title": "Sample Spline",
 "trace": false,
 "uniform_interval": 0.295
@@ -546,8 +551,8 @@ data = {
 "type": "flow_graph_nodes",
 "version": 1
 }
-view_zoom = 0.4661
-view_offset = Vector2(-134.034, -243.43)
+view_zoom = 0.95
+view_offset = Vector2(250, 200)
 new_name_counter = 86
 in_params = Array[ExtResource("1_ym11o")]([SubResource("Resource_0wyvu")])
 metadata/_custom_type_script = "uid://j6vjeb5cjjoy"

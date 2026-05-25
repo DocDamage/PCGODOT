@@ -17,7 +17,7 @@ data = {
 "to_node": &"id_0005_subgraph",
 "to_port": 0
 }],
-"min_pos": Vector2(-40, 180),
+"min_pos": Vector2(-80, 240),
 "nodes": [{
 "args_port": {},
 "name": &"id_0006_subgraph",
@@ -47,7 +47,7 @@ data = {
 }
 },
 "name": &"id_0005_subgraph",
-"position": Vector2(460, 20),
+"position": Vector2(460, 0),
 "settings": {
 "debug_bulk": 0,
 "debug_color": Color(1, 1, 1, 1),
@@ -69,9 +69,9 @@ data = {
 "type": "flow_graph_nodes",
 "version": 1
 }
-view_zoom = 0.9673496
-view_offset = Vector2(-56.876404, -353.25824)
-new_name_counter = 6
+view_zoom = 1.2875421
+view_offset = Vector2(-187.84027, -120.39685)
+new_name_counter = 7
 
 [node name="DemoRegenerate" type="Node3D" unique_id=635690407]
 

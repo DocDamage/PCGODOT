@@ -201,7 +201,7 @@ data = {
 "type": "flow_graph_nodes",
 "version": 1
 }
-view_zoom = 1.4640998
-view_offset = Vector2(555.388, -77.9436)
-new_name_counter = 1
+view_zoom = 0.7298981
+view_offset = Vector2(-140.75806, -168.38104)
+new_name_counter = 4
 in_params = Array[ExtResource("1_011hi")]([SubResource("Resource_s3iqj")])

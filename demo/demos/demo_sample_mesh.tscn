@@ -27,8 +27,34 @@ data = {
 "to_node": &"id_0020_sample_mesh",
 "to_port": 0
 }],
-"min_pos": Vector2(20, 180),
+"min_pos": Vector2(-180, 160),
 "nodes": [{
+"args_port": {
+"In": {
+"connected": true,
+"port": 0
+}
+},
+"name": &"id_0013_self_pruning",
+"position": Vector2(660, 0),
+"settings": {
+"debug_bulk": 0,
+"debug_color": Color(1, 1, 1, 1),
+"debug_enabled": false,
+"debug_mode": 0,
+"debug_modulate_by": "",
+"debug_output": 0,
+"debug_scale": 1.0,
+"disabled": false,
+"inspect_enabled": false,
+"keep_self_intersections": false,
+"random_seed": 1138506605,
+"title": "Self Pruning",
+"trace": false
+},
+"show_disconnected_inputs": false,
+"template": "self_pruning"
+}, {
 "args_port": {
 "In A": {
 "connected": true,
@@ -40,7 +66,7 @@ data = {
 }
 },
 "name": &"id_0015_filter",
-"position": Vector2(880, 0),
+"position": Vector2(960, 0),
 "settings": {
 "condition": 2,
 "debug_bulk": 0,
@@ -62,35 +88,9 @@ data = {
 "show_disconnected_inputs": false,
 "template": "filter"
 }, {
-"args_port": {
-"In": {
-"connected": true,
-"port": 0
-}
-},
-"name": &"id_0013_self_pruning",
-"position": Vector2(540, 40),
-"settings": {
-"debug_bulk": 0,
-"debug_color": Color(1, 1, 1, 1),
-"debug_enabled": false,
-"debug_mode": 0,
-"debug_modulate_by": "",
-"debug_output": 0,
-"debug_scale": 1.0,
-"disabled": false,
-"inspect_enabled": false,
-"keep_self_intersections": false,
-"random_seed": 1138506605,
-"title": "Self Pruning",
-"trace": false
-},
-"show_disconnected_inputs": false,
-"template": "self_pruning"
-}, {
 "args_port": {},
 "name": &"id_0041_scan_meshes",
-"position": Vector2(0, 20),
+"position": Vector2(0, 0),
 "settings": {
 "debug_bulk": 0,
 "debug_color": Color(1, 1, 1, 1),
@@ -145,7 +145,7 @@ data = {
 }
 },
 "name": &"id_0020_sample_mesh",
-"position": Vector2(180, 40),
+"position": Vector2(280, 0),
 "settings": {
 "debug_bulk": 0,
 "debug_color": Color(1, 1, 1, 1),
@@ -157,8 +157,8 @@ data = {
 "density": 0.5,
 "disabled": false,
 "discard_hard_edges": true,
-"hard_edge_angle_threshold": 53.24,
-"hard_edge_distance_threshold": 4.12,
+"hard_edge_angle_threshold": 43.65000000002328,
+"hard_edge_distance_threshold": 2.1700000000419095,
 "inspect_enabled": false,
 "mode": 0,
 "num_samples": 100,
@@ -173,8 +173,8 @@ data = {
 "type": "flow_graph_nodes",
 "version": 1
 }
-view_zoom = 0.82644594
-view_offset = Vector2(-238.44984, -171.08337)
+view_zoom = 0.75131446
+view_offset = Vector2(-261.46164, -301.31323)
 new_name_counter = 44
 metadata/_custom_type_script = "uid://j6vjeb5cjjoy"
 
