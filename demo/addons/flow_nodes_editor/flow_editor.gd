@@ -245,6 +245,37 @@ func _reload_resource_from_disk(res: FlowGraphResource) -> FlowGraphResource:
 		return fresh
 	return res
 
+## Called by plugin.gd when EditorFileSystem detects files changed on disk.
+## Reloads the active graph (and all open tabs) without needing a tab switch.
+func _on_filesystem_changed():
+	if not current_resource or current_resource.resource_path == "":
+		return
+	
+	# Reload the active tab's resource from disk
+	var refreshed = _reload_resource_from_disk(current_resource)
+	if refreshed != current_resource:
+		# Resource was stale, swap it in
+		current_resource = refreshed
+		if active_tab_index >= 0 and active_tab_index < open_tabs.size():
+			open_tabs[active_tab_index].resource = refreshed
+		
+		# Reconnect signals
+		if refreshed and not refreshed.in_params_changed.is_connected(_on_in_params_changed):
+			refreshed.in_params_changed.connect(_on_in_params_changed)
+		
+		# Rebuild the UI from the fresh resource
+		_clear_ui_nodes()
+		FlowNodeIO.loadFromResource(self)
+		ctx.graph = current_resource
+		ctx.owner = resource_owner
+		ctx.gedit_nodes_by_name = gedit_nodes_by_name
+		markAllNodesAsDirty()
+		queueRegen()
+		populatePopupInputsMenu()
+		update_status_bar()
+		print("[DataFlow] Auto-reloaded graph from disk: %s" % current_resource.resource_path)
+
+
 func saveResource():
 	FlowNodeIO.saveToResource( self )
 	save_pending = false

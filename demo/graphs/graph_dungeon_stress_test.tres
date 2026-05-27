@@ -342,7 +342,6 @@ data = {
 "keep_alive": false,
 "to_node": &"sub_wall_decor",
 "to_port": 0
-}, {
 }],
 "min_pos": Vector2(0, 240),
 "nodes": [{
