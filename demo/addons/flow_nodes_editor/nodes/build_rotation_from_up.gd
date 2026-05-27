@@ -17,8 +17,14 @@ func execute( ctx : FlowData.EvaluationContext ):
 		return
 	
 	var out_data : FlowData.Data = in_data.duplicate()
-	var srot : PackedVector3Array = out_data.cloneStream(FlowData.AttrRotation)
 	var num_elems = in_data.size()
+	var srot : PackedVector3Array
+	var cloned = out_data.cloneStream(FlowData.AttrRotation)
+	if cloned != null:
+		srot = cloned
+	else:
+		# Input has no rotation stream yet — create one (this node builds rotation from scratch)
+		srot = out_data.addStream(FlowData.AttrRotation, FlowData.DataType.Vector)
 	
 	var use_constant = settings.use_constant
 	var up_const = settings.up_vector_constant

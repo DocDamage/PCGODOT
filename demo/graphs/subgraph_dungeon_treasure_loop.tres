@@ -1,0 +1,231 @@
+[gd_resource type="Resource" script_class="FlowGraphResource" format=3 uid="uid://g7kk643b7cgn"]
+
+[ext_resource type="PackedScene" uid="uid://vnhta1hy7cpo" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/coin_stack_medium.gltf.glb" id="1_coins_med"]
+[ext_resource type="PackedScene" uid="uid://jtqau82fxahn" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/coin_stack_large.gltf.glb" id="2_coins_lg"]
+[ext_resource type="PackedScene" uid="uid://b0637cdw60mbc" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/coin_stack_small.gltf.glb" id="3_coins_sm"]
+[ext_resource type="PackedScene" uid="uid://bus4frw34kk3i" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/keyring.gltf.glb" id="4_keyring"]
+[ext_resource type="PackedScene" uid="uid://bhciy7kjxcbrs" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/key.gltf.glb" id="5_key"]
+[ext_resource type="PackedScene" uid="uid://degdfaom3n5p" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/box_small.gltf.glb" id="6_box_sm"]
+[ext_resource type="PackedScene" uid="uid://xsc1w6d2g7vo" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/box_small_decorated.gltf.glb" id="7_box_dec"]
+[ext_resource type="Script" uid="uid://co0f3ugd2wj1y" path="res://addons/flow_nodes_editor/graph_input_parameter.gd" id="8_inparam"]
+[ext_resource type="Script" uid="uid://j6vjeb5cjjoy" path="res://addons/flow_nodes_editor/flow_graph_resource.gd" id="9_graphres"]
+
+[sub_resource type="Resource" id="Resource_item"]
+script = ExtResource("8_inparam")
+name = "TreasureRoom"
+
+[sub_resource type="Resource" id="Resource_accum"]
+script = ExtResource("8_inparam")
+name = "AllTreasure"
+
+[resource]
+script = ExtResource("9_graphres")
+data = {
+"frames": [],
+"links": [{
+"from_node": &"input_TreasureRoom",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"treasure_offsets",
+"to_port": 0
+}, {
+"from_node": &"treasure_offsets",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"select_treasure_spots",
+"to_port": 0
+}, {
+"from_node": &"select_treasure_spots",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"jitter_treasure",
+"to_port": 0
+}, {
+"from_node": &"jitter_treasure",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"spawn_treasure",
+"to_port": 0
+}, {
+"from_node": &"jitter_treasure",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"merge_all",
+"to_port": 1
+}, {
+"from_node": &"input_AllTreasure",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"merge_all",
+"to_port": 0
+}, {
+"from_node": &"merge_all",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"output_AllTreasure",
+"to_port": 0
+}, {
+"from_node": &"spawn_treasure",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"output_SpawnedTreasure",
+"to_port": 0
+}],
+"min_pos": Vector2(0, 0),
+"nodes": [{
+"args_port": {},
+"name": &"input_TreasureRoom",
+"position": Vector2(0, 0),
+"settings": {
+"name": "TreasureRoom"
+},
+"show_disconnected_inputs": false,
+"template": "input"
+}, {
+"args_port": {},
+"name": &"input_AllTreasure",
+"position": Vector2(0, 300),
+"settings": {
+"name": "AllTreasure"
+},
+"show_disconnected_inputs": false,
+"template": "input"
+}, {
+"args_port": {
+"Anchors": {
+"connected": true,
+"port": 0
+}
+},
+"name": &"treasure_offsets",
+"position": Vector2(300, 0),
+"settings": {
+"combine_rotation": false,
+"inherit_anchor_size": false,
+"label_attribute": "offset_label",
+"labels": Array[String](["loot", "loot", "loot", "loot", "loot", "loot"]),
+"local_space": true,
+"offset_index_attribute": "offset_index",
+"offsets": Array[Vector3]([Vector3(-0.36, 0, -0.36), Vector3(0.36, 0, -0.36), Vector3(-0.36, 0, 0.36), Vector3(0.36, 0, 0.36), Vector3(0, 0, -0.25), Vector3(0, 0, 0.25)]),
+"parent_index_attribute": "parent_index",
+"random_seed": 4401,
+"rotations": Array[Vector3]([Vector3(0, 30, 0), Vector3(0, -45, 0), Vector3(0, 120, 0), Vector3(0, -120, 0), Vector3(0, 10, 0), Vector3(0, -20, 0)]),
+"scale_offsets_by_anchor_size": true,
+"sizes": Array[Vector3]([Vector3(0.5, 0.5, 0.5), Vector3(0.5, 0.5, 0.5), Vector3(0.5, 0.5, 0.5), Vector3(0.5, 0.5, 0.5), Vector3(0.45, 0.45, 0.45), Vector3(0.45, 0.45, 0.45)]),
+"title": "Treasure Spots",
+"trace": false
+},
+"show_disconnected_inputs": false,
+"template": "point_offsets"
+}, {
+"args_port": {
+"In": {
+"connected": true,
+"port": 0
+}
+},
+"name": &"select_treasure_spots",
+"position": Vector2(600, 0),
+"settings": {
+"random_seed": 4501,
+"ratio": 0.55,
+"title": "Select Spots",
+"trace": false,
+"weight_name": ""
+},
+"show_disconnected_inputs": false,
+"template": "select_points"
+}, {
+"args_port": {
+"In": {
+"connected": true,
+"port": 0
+}
+},
+"name": &"jitter_treasure",
+"position": Vector2(900, 0),
+"settings": {
+"offset_max": Vector3(0.06, 0, 0.06),
+"offset_min": Vector3(-0.06, 0, -0.06),
+"rotation_max": Vector3(0, 180, 0),
+"rotation_min": Vector3(0, 0, 0),
+"scale_max": Vector3(1.1, 1.1, 1.1),
+"scale_min": Vector3(0.8, 0.8, 0.8),
+"title": "Jitter Treasure",
+"uniform_scale": true
+},
+"show_disconnected_inputs": false,
+"template": "transform"
+}, {
+"args_port": {
+"In": {
+"connected": true,
+"port": 0
+}
+},
+"name": &"spawn_treasure",
+"position": Vector2(1200, 0),
+"settings": {
+"clear_previous_instances": true,
+"random_seed": 4601,
+"randomize_scene_variants": true,
+"scene_variant_weights": Array[float]([2.0, 1.0, 3.0, 0.5, 0.8, 1.5, 0.7]),
+"scene_variants": Array[PackedScene]([ExtResource("1_coins_med"), ExtResource("2_coins_lg"), ExtResource("3_coins_sm"), ExtResource("4_keyring"), ExtResource("5_key"), ExtResource("6_box_sm"), ExtResource("7_box_dec")]),
+"title": "Spawn Treasure",
+"trace": false
+},
+"show_disconnected_inputs": false,
+"template": "spawn_scenes"
+}, {
+"args_port": {
+"In_A": {
+"connected": true,
+"port": 0
+},
+"In_B": {
+"connected": true,
+"port": 1
+}
+},
+"name": &"merge_all",
+"position": Vector2(900, 300),
+"settings": {
+"title": "Merge All Treasure"
+},
+"show_disconnected_inputs": false,
+"template": "merge"
+}, {
+"args_port": {
+"In": {
+"connected": true,
+"port": 0
+}
+},
+"name": &"output_AllTreasure",
+"position": Vector2(1200, 300),
+"settings": {
+"name": "AllTreasure"
+},
+"show_disconnected_inputs": false,
+"template": "output"
+}, {
+"args_port": {
+"In": {
+"connected": true,
+"port": 0
+}
+},
+"name": &"output_SpawnedTreasure",
+"position": Vector2(1500, 0),
+"settings": {
+"name": "SpawnedTreasure"
+},
+"show_disconnected_inputs": false,
+"template": "output"
+}],
+"type": "flow_graph_nodes",
+"version": 1
+}
+view_zoom = 0.5
+new_name_counter = 9
+in_params = Array[ExtResource("8_inparam")]([SubResource("Resource_item"), SubResource("Resource_accum")])

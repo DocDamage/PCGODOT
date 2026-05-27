@@ -119,6 +119,12 @@ func _switch_to_tab(index: int, new_owner = null):
 		current_resource.in_params_changed.disconnect(_on_in_params_changed)
 		
 	active_tab_index = index
+	
+	# Reload the resource from disk to pick up any external changes (agents, git, etc.)
+	var tab_resource = open_tabs[index].resource
+	var refreshed = _reload_resource_from_disk(tab_resource)
+	if refreshed != tab_resource:
+		open_tabs[index].resource = refreshed
 	current_resource = open_tabs[index].resource
 	
 	# Connect to new resource in_params_changed
@@ -221,11 +227,23 @@ func _on_button_open_pressed():
 	open_file_dialog.popup_centered_ratio(0.4)
 
 func _on_graph_file_selected(path: String):
-	var res = load(path)
+	var res = ResourceLoader.load(path, "Resource", ResourceLoader.CACHE_MODE_REPLACE)
 	if res is FlowGraphResource:
 		setResourceToEdit(res, null)
 	else:
 		push_error("Selected resource is not a FlowGraphResource!")
+
+## Reloads a FlowGraphResource from disk if it has a valid path, bypassing cache.
+## Returns the refreshed resource, or the original if it has no path (unsaved).
+func _reload_resource_from_disk(res: FlowGraphResource) -> FlowGraphResource:
+	if res == null or res.resource_path == "":
+		return res
+	if not ResourceLoader.exists(res.resource_path):
+		return res
+	var fresh = ResourceLoader.load(res.resource_path, "Resource", ResourceLoader.CACHE_MODE_REPLACE)
+	if fresh is FlowGraphResource:
+		return fresh
+	return res
 
 func saveResource():
 	FlowNodeIO.saveToResource( self )
@@ -1580,8 +1598,8 @@ func collapse_selected_to_subgraph():
 		push_error("Failed to save collapsed subgraph to %s" % path)
 		return
 		
-	# Load the resource to make sure we have a valid reference
-	var loaded_subgraph = load(path)
+	# Load the resource fresh from disk (bypass cache) to ensure we get the just-saved version
+	var loaded_subgraph = ResourceLoader.load(path, "Resource", ResourceLoader.CACHE_MODE_REPLACE)
 	
 	# Prepare parent graph state change
 	var after_nodes = []

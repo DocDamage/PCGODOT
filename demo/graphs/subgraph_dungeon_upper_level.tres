@@ -121,18 +121,6 @@ data = {
 "keep_alive": false,
 "to_node": "upper_floor_unit",
 "to_port": 0
-}, {
-"from_node": "select_upper_rooms",
-"from_port": 0,
-"keep_alive": false,
-"to_node": "stair_lower_wall_points",
-"to_port": 0
-}, {
-"from_node": "stair_lower_wall_points",
-"from_port": 0,
-"keep_alive": false,
-"to_node": "spawn_stair_lower_walls",
-"to_port": 0
 }],
 "min_pos": Vector2(0, 0),
 "nodes": [{
@@ -298,9 +286,9 @@ data = {
 "inherit_anchor_size": false,
 "labels": ["upper_stair_opening"],
 "local_space": true,
-"offsets": [Vector3(0, 4.2, -2)],
+"offsets": [Vector3(0, 4.2, 0)],
 "rotations": [Vector3(0, 0, 0)],
-"sizes": [Vector3(3.6, 1.4, 7.6)]
+"sizes": [Vector3(3.7, 1.4, 3.7)]
 },
 "show_disconnected_inputs": false,
 "template": "point_offsets"
@@ -313,32 +301,6 @@ data = {
 },
 "show_disconnected_inputs": false,
 "template": "difference"
-}, {
-"args_port": {},
-"name": "stair_lower_wall_points",
-"position": Vector2(900, 820),
-"settings": {
-"inherit_anchor_size": false,
-"labels": ["stair_wall_l0", "stair_wall_r0", "stair_wall_l1", "stair_wall_r1"],
-"local_space": true,
-"offsets": [Vector3(-2.5, 0, -4), Vector3(2.5, 0, -4), Vector3(-2.5, 0, 0), Vector3(2.5, 0, 0)],
-"rotations": [Vector3(0, 90, 0), Vector3(0, 90, 0), Vector3(0, 90, 0), Vector3(0, 90, 0)],
-"sizes": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(1, 1, 1)]
-},
-"show_disconnected_inputs": false,
-"template": "point_offsets"
-}, {
-"args_port": {},
-"name": "spawn_stair_lower_walls",
-"position": Vector2(1200, 820),
-"settings": {
-"random_seed": 3301,
-"randomize_scene_variants": true,
-"scene_variant_weights": [8.0, 1.0],
-"scene_variants": [ExtResource("5_8kqtn"), ExtResource("6_cdcu3")]
-},
-"show_disconnected_inputs": false,
-"template": "spawn_scenes"
 }],
 "type": "flow_graph_nodes",
 "version": 1

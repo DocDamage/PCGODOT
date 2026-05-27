@@ -10,8 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://djbannpf354a8" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/shelf_small_candles.gltf.glb" id="8_7gsuc"]
 [ext_resource type="Script" uid="uid://co0f3ugd2wj1y" path="res://addons/flow_nodes_editor/graph_input_parameter.gd" id="9_aovpp"]
 [ext_resource type="Script" uid="uid://j6vjeb5cjjoy" path="res://addons/flow_nodes_editor/flow_graph_resource.gd" id="10_i4mcx"]
-[ext_resource type="PackedScene" uid="uid://bwap6a5lxsuas" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/wall_doorway.glb" id="11_mom2y"]
-[ext_resource type="PackedScene" uid="uid://dji6df6muod7a" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/wall_doorway_scaffold.glb" id="12_3jcxi"]
+[ext_resource type="PackedScene" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/shelf_small.gltf.glb" id="11_shfsm"]
+[ext_resource type="PackedScene" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/keyring_hanging.gltf.glb" id="12_krhng"]
+[ext_resource type="PackedScene" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/sword_shield_broken.gltf.glb" id="13_swbkn"]
+[ext_resource type="PackedScene" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/banner_patternB_red.gltf.glb" id="14_bnpbr"]
+[ext_resource type="PackedScene" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/banner_triple_red.gltf.glb" id="15_bntrd"]
 
 [sub_resource type="Resource" id="Resource_dr3un"]
 script = ExtResource("9_aovpp")
@@ -28,16 +31,22 @@ data = {
 "to_node": &"orient_edges_from_normals",
 "to_port": 0
 }, {
-"from_node": &"banner_offsets",
+"from_node": &"orient_edges_from_normals",
 "from_port": 0,
 "keep_alive": false,
-"to_node": &"spawn_banners",
+"to_node": &"select_wall_decor",
 "to_port": 0
 }, {
 "from_node": &"orient_edges_from_normals",
 "from_port": 0,
 "keep_alive": false,
-"to_node": &"select_wall_decor",
+"to_node": &"select_banners",
+"to_port": 0
+}, {
+"from_node": &"orient_edges_from_normals",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"select_shelves",
 "to_port": 0
 }, {
 "from_node": &"select_wall_decor",
@@ -52,157 +61,35 @@ data = {
 "to_node": &"spawn_wall_decor",
 "to_port": 0
 }, {
-"from_node": &"orient_edges_from_normals",
-"from_port": 0,
-"keep_alive": false,
-"to_node": &"select_doors",
-"to_port": 0
-}, {
-"from_node": &"select_doors",
-"from_port": 0,
-"keep_alive": false,
-"to_node": &"door_offsets",
-"to_port": 0
-}, {
-"from_node": &"door_offsets",
-"from_port": 0,
-"keep_alive": false,
-"to_node": &"spawn_doors",
-"to_port": 0
-}, {
 "from_node": &"select_banners",
 "from_port": 0,
 "keep_alive": false,
 "to_node": &"banner_offsets",
 "to_port": 0
 }, {
-"from_node": &"orient_edges_from_normals",
+"from_node": &"banner_offsets",
 "from_port": 0,
 "keep_alive": false,
-"to_node": &"select_banners",
+"to_node": &"spawn_banners",
+"to_port": 0
+}, {
+"from_node": &"select_shelves",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"shelf_offsets",
+"to_port": 0
+}, {
+"from_node": &"shelf_offsets",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"spawn_shelves",
 "to_port": 0
 }],
-"min_pos": Vector2(0, 40),
+"min_pos": Vector2(0, 0),
 "nodes": [{
-"args_port": {
-"In": {
-"connected": true,
-"port": 0
-}
-},
-"name": &"select_wall_decor",
-"position": Vector2(300, 240),
-"settings": {
-"debug_bulk": 0,
-"debug_color": Color(1, 1, 1, 1),
-"debug_enabled": false,
-"debug_mode": 0,
-"debug_modulate_by": "",
-"debug_output": 0,
-"debug_scale": 1.0,
-"disabled": false,
-"inspect_enabled": false,
-"random_seed": 2601,
-"ratio": 0.12,
-"title": "Select Points",
-"trace": false,
-"weight_name": ""
-},
-"show_disconnected_inputs": false,
-"template": "select_points"
-}, {
-"args_port": {
-"In": {
-"connected": true,
-"port": 0
-}
-},
-"name": &"select_doors",
-"position": Vector2(300, 460),
-"settings": {
-"debug_bulk": 0,
-"debug_color": Color(1, 1, 1, 1),
-"debug_enabled": false,
-"debug_mode": 0,
-"debug_modulate_by": "",
-"debug_output": 0,
-"debug_scale": 1.0,
-"disabled": false,
-"inspect_enabled": false,
-"random_seed": 2751,
-"ratio": 0.08,
-"title": "Select Points",
-"trace": false,
-"weight_name": ""
-},
-"show_disconnected_inputs": false,
-"template": "select_points"
-}, {
-"args_port": {
-"In": {
-"connected": true,
-"port": 0
-}
-},
-"name": &"spawn_doors",
-"position": Vector2(900, 460),
-"settings": {
-"assign_attributes": {},
-"assign_target_path": "",
-"clear_previous_instances": true,
-"debug_bulk": 0,
-"debug_color": Color(1, 1, 1, 1),
-"debug_enabled": false,
-"debug_mode": 0,
-"debug_modulate_by": "",
-"debug_output": 0,
-"debug_scale": 1.0,
-"disabled": false,
-"inspect_enabled": false,
-"random_seed": 2761,
-"randomize_scene_variants": true,
-"scene": null,
-"scene_attribute": "",
-"scene_selector_attribute": "",
-"scene_variant_weights": Array[float]([1.0, 0.55]),
-"scene_variants": Array[PackedScene]([ExtResource("11_mom2y"), ExtResource("12_3jcxi")]),
-"spawn_parent_path": "",
-"title": "Spawn Scenes",
-"trace": false
-},
-"show_disconnected_inputs": false,
-"template": "spawn_scenes"
-}, {
-"args_port": {
-"In": {
-"connected": true,
-"port": 0
-}
-},
-"name": &"select_banners",
-"position": Vector2(300, 0),
-"settings": {
-"debug_bulk": 0,
-"debug_color": Color(1, 1, 1, 1),
-"debug_enabled": false,
-"debug_mode": 0,
-"debug_modulate_by": "",
-"debug_output": 0,
-"debug_scale": 1.0,
-"disabled": false,
-"inspect_enabled": false,
-"random_seed": 2401,
-"ratio": 0.14,
-"title": "Select Points",
-"trace": false,
-"weight_name": ""
-},
-"show_disconnected_inputs": false,
-"template": "select_points"
-}, {
 "args_port": {},
 "name": &"input_edges",
-"position": Vector2(0, 120),
+"position": Vector2(0, 100),
 "settings": {
 "data_type": 2,
 "debug_bulk": 0,
@@ -229,7 +116,7 @@ data = {
 }
 },
 "name": &"orient_edges_from_normals",
-"position": Vector2(150, 120),
+"position": Vector2(320, 100),
 "settings": {
 "axis": "z",
 "debug_bulk": 0,
@@ -252,15 +139,14 @@ data = {
 "template": "build_rotation_from_up"
 }, {
 "args_port": {
-"Anchors": {
+"In": {
 "connected": true,
 "port": 0
 }
 },
-"name": &"door_offsets",
-"position": Vector2(600, 460),
+"name": &"select_wall_decor",
+"position": Vector2(680, 0),
 "settings": {
-"combine_rotation": true,
 "debug_bulk": 0,
 "debug_color": Color(1, 1, 1, 1),
 "debug_enabled": false,
@@ -269,23 +155,15 @@ data = {
 "debug_output": 0,
 "debug_scale": 1.0,
 "disabled": false,
-"inherit_anchor_size": false,
 "inspect_enabled": false,
-"label_attribute": "offset_label",
-"labels": Array[String](["door"]),
-"local_space": true,
-"offset_index_attribute": "offset_index",
-"offsets": Array[Vector3]([Vector3(0, 0, -0.52)]),
-"parent_index_attribute": "parent_index",
-"random_seed": 3207323691,
-"rotations": Array[Vector3]([Vector3(0, 0, 0)]),
-"scale_offsets_by_anchor_size": false,
-"sizes": Array[Vector3]([Vector3(1, 1, 1)]),
-"title": "Point Offsets",
-"trace": false
+"random_seed": 2601,
+"ratio": 0.22,
+"title": "Select Points",
+"trace": false,
+"weight_name": ""
 },
 "show_disconnected_inputs": false,
-"template": "point_offsets"
+"template": "select_points"
 }, {
 "args_port": {
 "Anchors": {
@@ -294,7 +172,7 @@ data = {
 }
 },
 "name": &"wall_decor_offsets",
-"position": Vector2(600, 240),
+"position": Vector2(980, 0),
 "settings": {
 "combine_rotation": true,
 "debug_bulk": 0,
@@ -311,7 +189,7 @@ data = {
 "labels": Array[String](["wall_decor"]),
 "local_space": true,
 "offset_index_attribute": "offset_index",
-"offsets": Array[Vector3]([Vector3(0, 1.35, -0.52)]),
+"offsets": Array[Vector3]([Vector3(0, 1.35, -0.48)]),
 "parent_index_attribute": "parent_index",
 "random_seed": 242963936,
 "rotations": Array[Vector3]([Vector3(0, 0, 0)]),
@@ -330,7 +208,7 @@ data = {
 }
 },
 "name": &"spawn_wall_decor",
-"position": Vector2(900, 240),
+"position": Vector2(1300, 0),
 "settings": {
 "assign_attributes": {},
 "assign_target_path": "",
@@ -349,8 +227,8 @@ data = {
 "scene": null,
 "scene_attribute": "",
 "scene_selector_attribute": "",
-"scene_variant_weights": Array[float]([1.0, 0.35, 0.8]),
-"scene_variants": Array[PackedScene]([ExtResource("6_4uh8i"), ExtResource("7_prum7"), ExtResource("8_7gsuc")]),
+"scene_variant_weights": Array[float]([1.0, 0.35, 0.8, 0.5]),
+"scene_variants": Array[PackedScene]([ExtResource("6_4uh8i"), ExtResource("7_prum7"), ExtResource("8_7gsuc"), ExtResource("13_swbkn")]),
 "spawn_parent_path": "",
 "title": "Spawn Scenes",
 "trace": false
@@ -364,8 +242,71 @@ data = {
 "port": 0
 }
 },
+"name": &"select_banners",
+"position": Vector2(680, 200),
+"settings": {
+"debug_bulk": 0,
+"debug_color": Color(1, 1, 1, 1),
+"debug_enabled": false,
+"debug_mode": 0,
+"debug_modulate_by": "",
+"debug_output": 0,
+"debug_scale": 1.0,
+"disabled": false,
+"inspect_enabled": false,
+"random_seed": 2401,
+"ratio": 0.24,
+"title": "Select Points",
+"trace": false,
+"weight_name": ""
+},
+"show_disconnected_inputs": false,
+"template": "select_points"
+}, {
+"args_port": {
+"Anchors": {
+"connected": true,
+"port": 0
+}
+},
+"name": &"banner_offsets",
+"position": Vector2(980, 200),
+"settings": {
+"combine_rotation": true,
+"debug_bulk": 0,
+"debug_color": Color(1, 1, 1, 1),
+"debug_enabled": false,
+"debug_mode": 0,
+"debug_modulate_by": "",
+"debug_output": 0,
+"debug_scale": 1.0,
+"disabled": false,
+"inherit_anchor_size": false,
+"inspect_enabled": false,
+"label_attribute": "offset_label",
+"labels": Array[String](["banner"]),
+"local_space": true,
+"offset_index_attribute": "offset_index",
+"offsets": Array[Vector3]([Vector3(0, 0.55, -0.50)]),
+"parent_index_attribute": "parent_index",
+"random_seed": 3627988437,
+"rotations": Array[Vector3]([Vector3(0, 0, 0)]),
+"scale_offsets_by_anchor_size": false,
+"sizes": Array[Vector3]([Vector3(0.82, 0.82, 0.82)]),
+"title": "Point Offsets",
+"trace": false
+},
+"show_disconnected_inputs": false,
+"template": "point_offsets"
+}, {
+"args_port": {
+"In": {
+"connected": true,
+"port": 0
+}
+},
 "name": &"spawn_banners",
-"position": Vector2(900, 0),
+"position": Vector2(1300, 200),
 "settings": {
 "assign_attributes": {},
 "assign_target_path": "",
@@ -384,8 +325,8 @@ data = {
 "scene": null,
 "scene_attribute": "",
 "scene_selector_attribute": "",
-"scene_variant_weights": Array[float]([1.0, 1.0, 1.0, 0.8, 0.5]),
-"scene_variants": Array[PackedScene]([ExtResource("1_skn6l"), ExtResource("2_xswv1"), ExtResource("3_j5ak0"), ExtResource("4_3e4tf"), ExtResource("5_j577g")]),
+"scene_variant_weights": Array[float]([1.0, 1.0, 1.0, 0.8, 0.5, 0.6, 0.4]),
+"scene_variants": Array[PackedScene]([ExtResource("1_skn6l"), ExtResource("2_xswv1"), ExtResource("3_j5ak0"), ExtResource("4_3e4tf"), ExtResource("5_j577g"), ExtResource("14_bnpbr"), ExtResource("15_bntrd")]),
 "spawn_parent_path": "",
 "title": "Spawn Scenes",
 "trace": false
@@ -394,13 +335,40 @@ data = {
 "template": "spawn_scenes"
 }, {
 "args_port": {
+"In": {
+"connected": true,
+"port": 0
+}
+},
+"name": &"select_shelves",
+"position": Vector2(680, 400),
+"settings": {
+"debug_bulk": 0,
+"debug_color": Color(1, 1, 1, 1),
+"debug_enabled": false,
+"debug_mode": 0,
+"debug_modulate_by": "",
+"debug_output": 0,
+"debug_scale": 1.0,
+"disabled": false,
+"inspect_enabled": false,
+"random_seed": 2771,
+"ratio": 0.12,
+"title": "Select Points",
+"trace": false,
+"weight_name": ""
+},
+"show_disconnected_inputs": false,
+"template": "select_points"
+}, {
+"args_port": {
 "Anchors": {
 "connected": true,
 "port": 0
 }
 },
-"name": &"banner_offsets",
-"position": Vector2(600, 0),
+"name": &"shelf_offsets",
+"position": Vector2(980, 400),
 "settings": {
 "combine_rotation": true,
 "debug_bulk": 0,
@@ -414,25 +382,60 @@ data = {
 "inherit_anchor_size": false,
 "inspect_enabled": false,
 "label_attribute": "offset_label",
-"labels": Array[String](["banner"]),
+"labels": Array[String](["shelf"]),
 "local_space": true,
 "offset_index_attribute": "offset_index",
-"offsets": Array[Vector3]([Vector3(0, 0.55, -0.54)]),
+"offsets": Array[Vector3]([Vector3(0, 0.6, -0.48)]),
 "parent_index_attribute": "parent_index",
-"random_seed": 3627988437,
+"random_seed": 3207323692,
 "rotations": Array[Vector3]([Vector3(0, 0, 0)]),
 "scale_offsets_by_anchor_size": false,
-"sizes": Array[Vector3]([Vector3(0.82, 0.82, 0.82)]),
+"sizes": Array[Vector3]([Vector3(0.8, 0.8, 0.8)]),
 "title": "Point Offsets",
 "trace": false
 },
 "show_disconnected_inputs": false,
 "template": "point_offsets"
+}, {
+"args_port": {
+"In": {
+"connected": true,
+"port": 0
+}
+},
+"name": &"spawn_shelves",
+"position": Vector2(1300, 400),
+"settings": {
+"assign_attributes": {},
+"assign_target_path": "",
+"clear_previous_instances": true,
+"debug_bulk": 0,
+"debug_color": Color(1, 1, 1, 1),
+"debug_enabled": false,
+"debug_mode": 0,
+"debug_modulate_by": "",
+"debug_output": 0,
+"debug_scale": 1.0,
+"disabled": false,
+"inspect_enabled": false,
+"random_seed": 2781,
+"randomize_scene_variants": true,
+"scene": null,
+"scene_attribute": "",
+"scene_selector_attribute": "",
+"scene_variant_weights": Array[float]([1.0, 1.5, 0.6]),
+"scene_variants": Array[PackedScene]([ExtResource("11_shfsm"), ExtResource("8_7gsuc"), ExtResource("12_krhng")]),
+"spawn_parent_path": "",
+"title": "Spawn Scenes",
+"trace": false
+},
+"show_disconnected_inputs": false,
+"template": "spawn_scenes"
 }],
 "type": "flow_graph_nodes",
 "version": 1
 }
-view_zoom = 0.9673493
-view_offset = Vector2(206.36792, -215.35117)
-new_name_counter = 11
+view_zoom = 0.60064775
+view_offset = Vector2(151.77412, -237.11053)
+new_name_counter = 14
 in_params = Array[ExtResource("9_aovpp")]([SubResource("Resource_dr3un")])

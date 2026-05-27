@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cu3gga7dm0tau" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/wall_arched.gltf.glb" id="3_w0xid"]
 [ext_resource type="PackedScene" uid="uid://b712yatb3ml2l" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/wall_window_closed.gltf.glb" id="4_8t357"]
 [ext_resource type="PackedScene" uid="uid://cxiuc7yapm02e" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/wall_broken.gltf.glb" id="5_vu2vv"]
-[ext_resource type="PackedScene" uid="uid://bwap6a5lxsuas" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/wall_doorway.glb" id="6_8t357"]
-[ext_resource type="PackedScene" uid="uid://dji6df6muod7a" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/wall_doorway_scaffold.glb" id="7_vu2vv"]
+[ext_resource type="PackedScene" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/wall_shelves.gltf.glb" id="6_shvlw"]
+[ext_resource type="PackedScene" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/wall_gated.gltf.glb" id="7_gatdw"]
 
 [sub_resource type="Resource" id="Resource_hy2wg"]
 script = ExtResource("2_6i6xu")
@@ -60,8 +60,8 @@ data = {
 "settings": {
 "random_seed": 6021,
 "randomize_scene_variants": true,
-"scene_variant_weights": [7.0, 1.4, 1.0, 0.8, 0.35, 0.9, 0.6],
-"scene_variants": [ExtResource("1_yhwsy"), ExtResource("2_pmi3q"), ExtResource("3_w0xid"), ExtResource("4_8t357"), ExtResource("5_vu2vv"), ExtResource("6_8t357"), ExtResource("7_vu2vv")]
+"scene_variant_weights": [7.0, 1.8, 1.2, 0.9, 0.7, 0.5, 0.4],
+"scene_variants": [ExtResource("1_yhwsy"), ExtResource("2_pmi3q"), ExtResource("3_w0xid"), ExtResource("4_8t357"), ExtResource("6_shvlw"), ExtResource("7_gatdw"), ExtResource("5_vu2vv")]
 },
 "show_disconnected_inputs": false,
 "template": "spawn_scenes"

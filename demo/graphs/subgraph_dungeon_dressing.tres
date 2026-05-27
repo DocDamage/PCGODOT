@@ -39,6 +39,16 @@
 [ext_resource type="PackedScene" uid="uid://b0637cdw60mbc" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/coin_stack_small.gltf.glb" id="35_xaku3"]
 [ext_resource type="PackedScene" uid="uid://bhciy7kjxcbrs" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/key.gltf.glb" id="36_7klc6"]
 [ext_resource type="PackedScene" uid="uid://b6xnmkpkisb63" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/shelf_small.gltf.glb" id="37_pvwxj"]
+[ext_resource type="PackedScene" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/column.gltf.glb" id="38_colmn"]
+[ext_resource type="PackedScene" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/trunk_large_A.gltf.glb" id="39_trnka"]
+[ext_resource type="PackedScene" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/trunk_large_B.gltf.glb" id="40_trnkb"]
+[ext_resource type="PackedScene" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/rubble_large.gltf.glb" id="41_rubbl"]
+[ext_resource type="PackedScene" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/shelves.gltf.glb" id="42_shlvs"]
+[ext_resource type="PackedScene" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/keg.gltf.glb" id="43_keg01"]
+[ext_resource type="PackedScene" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/barrel_large_decorated.gltf.glb" id="44_brldec"]
+[ext_resource type="PackedScene" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/rubble_half.gltf.glb" id="45_rubhf"]
+[ext_resource type="PackedScene" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/torch.gltf.glb" id="46_torch"]
+[ext_resource type="PackedScene" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/coin.gltf.glb" id="47_coin1"]
 
 [sub_resource type="Resource" id="Resource_jfvob"]
 script = ExtResource("30_s3gcd")
@@ -49,6 +59,18 @@ script = ExtResource("31_xv8yy")
 data = {
 "frames": [],
 "links": [{
+"from_node": "input_rooms",
+"from_port": 0,
+"keep_alive": false,
+"to_node": "table_room_slots",
+"to_port": 0
+}, {
+"from_node": "table_room_slots",
+"from_port": 0,
+"keep_alive": false,
+"to_node": "select_table_rooms",
+"to_port": 0
+}, {
 "from_node": "select_table_rooms",
 "from_port": 0,
 "keep_alive": false,
@@ -79,6 +101,30 @@ data = {
 "to_node": "tabletop_bottles",
 "to_port": 0
 }, {
+"from_node": "rotate_tables",
+"from_port": 0,
+"keep_alive": false,
+"to_node": "tabletop_candles",
+"to_port": 0
+}, {
+"from_node": "rotate_tables",
+"from_port": 0,
+"keep_alive": false,
+"to_node": "table_seats",
+"to_port": 0
+}, {
+"from_node": "tabletop_plates",
+"from_port": 0,
+"keep_alive": false,
+"to_node": "select_table_plates",
+"to_port": 0
+}, {
+"from_node": "select_table_plates",
+"from_port": 0,
+"keep_alive": false,
+"to_node": "spawn_plates",
+"to_port": 0
+}, {
 "from_node": "tabletop_bottles",
 "from_port": 0,
 "keep_alive": false,
@@ -91,22 +137,46 @@ data = {
 "to_node": "spawn_bottles",
 "to_port": 0
 }, {
-"from_node": "rotate_tables",
-"from_port": 0,
-"keep_alive": false,
-"to_node": "tabletop_candles",
-"to_port": 0
-}, {
 "from_node": "tabletop_candles",
 "from_port": 0,
 "keep_alive": false,
 "to_node": "spawn_candles",
 "to_port": 0
 }, {
-"from_node": "rotate_tables",
+"from_node": "table_seats",
 "from_port": 0,
 "keep_alive": false,
-"to_node": "table_seats",
+"to_node": "select_table_seats",
+"to_port": 0
+}, {
+"from_node": "select_table_seats",
+"from_port": 0,
+"keep_alive": false,
+"to_node": "spawn_seats",
+"to_port": 0
+}, {
+"from_node": "input_rooms",
+"from_port": 0,
+"keep_alive": false,
+"to_node": "subtract_table_rooms",
+"to_port": 0
+}, {
+"from_node": "select_table_rooms",
+"from_port": 0,
+"keep_alive": false,
+"to_node": "subtract_table_rooms",
+"to_port": 1
+}, {
+"from_node": "subtract_table_rooms",
+"from_port": 0,
+"keep_alive": false,
+"to_node": "bed_wall_slots",
+"to_port": 0
+}, {
+"from_node": "bed_wall_slots",
+"from_port": 0,
+"keep_alive": false,
+"to_node": "select_bed_rooms",
 "to_port": 0
 }, {
 "from_node": "select_bed_rooms",
@@ -127,6 +197,30 @@ data = {
 "to_node": "spawn_beds",
 "to_port": 0
 }, {
+"from_node": "subtract_table_rooms",
+"from_port": 0,
+"keep_alive": false,
+"to_node": "subtract_bed_rooms",
+"to_port": 0
+}, {
+"from_node": "select_bed_rooms",
+"from_port": 0,
+"keep_alive": false,
+"to_node": "subtract_bed_rooms",
+"to_port": 1
+}, {
+"from_node": "subtract_bed_rooms",
+"from_port": 0,
+"keep_alive": false,
+"to_node": "storage_wall_slots",
+"to_port": 0
+}, {
+"from_node": "storage_wall_slots",
+"from_port": 0,
+"keep_alive": false,
+"to_node": "select_storage_rooms",
+"to_port": 0
+}, {
 "from_node": "select_storage_rooms",
 "from_port": 0,
 "keep_alive": false,
@@ -142,10 +236,28 @@ data = {
 "from_node": "storage_offsets",
 "from_port": 0,
 "keep_alive": false,
+"to_node": "prune_storage",
+"to_port": 0
+}, {
+"from_node": "prune_storage",
+"from_port": 0,
+"keep_alive": false,
 "to_node": "spawn_storage",
 "to_port": 0
 }, {
-"from_node": "input_rooms",
+"from_node": "subtract_bed_rooms",
+"from_port": 0,
+"keep_alive": false,
+"to_node": "subtract_storage_rooms",
+"to_port": 0
+}, {
+"from_node": "select_storage_rooms",
+"from_port": 0,
+"keep_alive": false,
+"to_node": "subtract_storage_rooms",
+"to_port": 1
+}, {
+"from_node": "subtract_storage_rooms",
 "from_port": 0,
 "keep_alive": false,
 "to_node": "select_treasure_rooms",
@@ -172,61 +284,61 @@ data = {
 "from_node": "input_rooms",
 "from_port": 0,
 "keep_alive": false,
-"to_node": "table_room_slots",
+"to_node": "corner_slots",
 "to_port": 0
 }, {
-"from_node": "table_room_slots",
+"from_node": "corner_slots",
 "from_port": 0,
 "keep_alive": false,
-"to_node": "select_table_rooms",
+"to_node": "select_corners",
 "to_port": 0
 }, {
-"from_node": "tabletop_plates",
+"from_node": "select_corners",
 "from_port": 0,
 "keep_alive": false,
-"to_node": "select_table_plates",
+"to_node": "corner_size",
 "to_port": 0
 }, {
-"from_node": "select_table_plates",
+"from_node": "corner_size",
 "from_port": 0,
 "keep_alive": false,
-"to_node": "spawn_plates",
+"to_node": "prune_corners",
 "to_port": 0
 }, {
-"from_node": "table_seats",
+"from_node": "prune_corners",
 "from_port": 0,
 "keep_alive": false,
-"to_node": "select_table_seats",
-"to_port": 0
-}, {
-"from_node": "select_table_seats",
-"from_port": 0,
-"keep_alive": false,
-"to_node": "spawn_seats",
+"to_node": "spawn_corners",
 "to_port": 0
 }, {
 "from_node": "input_rooms",
 "from_port": 0,
 "keep_alive": false,
-"to_node": "storage_wall_slots",
+"to_node": "wall_storage_slots",
 "to_port": 0
 }, {
-"from_node": "storage_wall_slots",
+"from_node": "wall_storage_slots",
 "from_port": 0,
 "keep_alive": false,
-"to_node": "select_storage_rooms",
+"to_node": "select_wall_storage",
 "to_port": 0
 }, {
-"from_node": "input_rooms",
+"from_node": "select_wall_storage",
 "from_port": 0,
 "keep_alive": false,
-"to_node": "bed_wall_slots",
+"to_node": "wall_storage_size",
 "to_port": 0
 }, {
-"from_node": "bed_wall_slots",
+"from_node": "wall_storage_size",
 "from_port": 0,
 "keep_alive": false,
-"to_node": "select_bed_rooms",
+"to_node": "prune_wall_storage",
+"to_port": 0
+}, {
+"from_node": "prune_wall_storage",
+"from_port": 0,
+"keep_alive": false,
+"to_node": "spawn_wall_storage",
 "to_port": 0
 }, {
 "from_node": "input_rooms",
@@ -250,20 +362,62 @@ data = {
 "from_node": "clutter_offsets",
 "from_port": 0,
 "keep_alive": false,
+"to_node": "select_clutter_slots",
+"to_port": 0
+}, {
+"from_node": "select_clutter_slots",
+"from_port": 0,
+"keep_alive": false,
 "to_node": "jitter_clutter",
 "to_port": 0
 }, {
 "from_node": "jitter_clutter",
 "from_port": 0,
 "keep_alive": false,
+"to_node": "prune_clutter",
+"to_port": 0
+}, {
+"from_node": "prune_clutter",
+"from_port": 0,
+"keep_alive": false,
 "to_node": "spawn_clutter",
+"to_port": 0
+}, {
+"from_node": "input_rooms",
+"from_port": 0,
+"keep_alive": false,
+"to_node": "floor_detail_slots",
+"to_port": 0
+}, {
+"from_node": "floor_detail_slots",
+"from_port": 0,
+"keep_alive": false,
+"to_node": "select_floor_detail",
+"to_port": 0
+}, {
+"from_node": "select_floor_detail",
+"from_port": 0,
+"keep_alive": false,
+"to_node": "jitter_floor_detail",
+"to_port": 0
+}, {
+"from_node": "jitter_floor_detail",
+"from_port": 0,
+"keep_alive": false,
+"to_node": "prune_floor_detail",
+"to_port": 0
+}, {
+"from_node": "prune_floor_detail",
+"from_port": 0,
+"keep_alive": false,
+"to_node": "spawn_floor_detail",
 "to_port": 0
 }],
 "min_pos": Vector2(0, 0),
 "nodes": [{
 "args_port": {},
 "name": "input_rooms",
-"position": Vector2(0, 300),
+"position": Vector2(0, 500),
 "settings": {
 "data_type": 2,
 "name": "rooms"
@@ -272,11 +426,24 @@ data = {
 "template": "input"
 }, {
 "args_port": {},
+"name": "table_room_slots",
+"position": Vector2(160, 80),
+"settings": {
+"inherit_anchor_size": false,
+"labels": ["table_slot"],
+"offsets": [Vector3(0, 0, 0)],
+"rotations": [Vector3(0, 0, 0)],
+"scale_offsets_by_anchor_size": true
+},
+"show_disconnected_inputs": false,
+"template": "point_offsets"
+}, {
+"args_port": {},
 "name": "select_table_rooms",
 "position": Vector2(300, 80),
 "settings": {
 "random_seed": 1101,
-"ratio": 0.2
+"ratio": 0.40
 },
 "show_disconnected_inputs": false,
 "template": "select_points"
@@ -285,8 +452,8 @@ data = {
 "name": "table_unit_size",
 "position": Vector2(600, 80),
 "settings": {
-"bounds_max": Vector3(0.5, 0.5, 0.5),
-"bounds_min": Vector3(-0.5, -0.5, -0.5)
+"bounds_max": Vector3(1.2, 0.5, 0.8),
+"bounds_min": Vector3(-1.2, -0.5, -0.8)
 },
 "show_disconnected_inputs": false,
 "template": "bounds_modifier"
@@ -320,12 +487,22 @@ data = {
 "position": Vector2(1200, 260),
 "settings": {
 "labels": ["plate", "plate", "plate", "plate"],
-"offsets": [Vector3(-0.43, 1.03, -0.62), Vector3(0.43, 1.03, -0.62), Vector3(-0.43, 1.03, 0.62), Vector3(0.43, 1.03, 0.62)],
+"offsets": [Vector3(-0.42, 1.08, -0.25), Vector3(0.42, 1.08, -0.25), Vector3(-0.42, 1.08, 0.25), Vector3(0.42, 1.08, 0.25)],
 "rotations": [Vector3(0, -8, 0), Vector3(0, 7, 0), Vector3(0, 5, 0), Vector3(0, -6, 0)],
-"sizes": [Vector3(0.58, 0.58, 0.58), Vector3(0.58, 0.58, 0.58), Vector3(0.58, 0.58, 0.58), Vector3(0.58, 0.58, 0.58)]
+"sizes": [Vector3(0.48, 0.48, 0.48), Vector3(0.48, 0.48, 0.48), Vector3(0.48, 0.48, 0.48), Vector3(0.48, 0.48, 0.48)]
 },
 "show_disconnected_inputs": false,
 "template": "point_offsets"
+}, {
+"args_port": {},
+"name": "select_table_plates",
+"position": Vector2(1370, 260),
+"settings": {
+"random_seed": 1351,
+"ratio": 0.65
+},
+"show_disconnected_inputs": false,
+"template": "select_points"
 }, {
 "args_port": {},
 "name": "spawn_plates",
@@ -344,8 +521,8 @@ data = {
 "position": Vector2(1200, 440),
 "settings": {
 "labels": ["bottle", "bottle"],
-"offsets": [Vector3(-0.32, 1.03, 0), Vector3(0.32, 1.03, 0.42)],
-"sizes": [Vector3(0.72, 0.72, 0.72), Vector3(0.72, 0.72, 0.72)]
+"offsets": [Vector3(-0.24, 1.08, 0.44), Vector3(0.24, 1.08, 0.44)],
+"sizes": [Vector3(0.62, 0.62, 0.62), Vector3(0.62, 0.62, 0.62)]
 },
 "show_disconnected_inputs": false,
 "template": "point_offsets"
@@ -355,7 +532,7 @@ data = {
 "position": Vector2(1500, 440),
 "settings": {
 "random_seed": 1401,
-"ratio": 0.62
+"ratio": 0.55
 },
 "show_disconnected_inputs": false,
 "template": "select_points"
@@ -377,8 +554,8 @@ data = {
 "position": Vector2(1200, 620),
 "settings": {
 "labels": ["candle"],
-"offsets": [Vector3(0, 1.035, -0.08)],
-"sizes": [Vector3(0.62, 0.62, 0.62)]
+"offsets": [Vector3(0, 1.08, -0.42)],
+"sizes": [Vector3(0.52, 0.52, 0.52)]
 },
 "show_disconnected_inputs": false,
 "template": "point_offsets"
@@ -400,11 +577,22 @@ data = {
 "position": Vector2(1200, -100),
 "settings": {
 "labels": ["seat", "seat", "seat", "seat"],
-"offsets": [Vector3(-1.38, 0, -0.62), Vector3(-1.38, 0, 0.62), Vector3(1.38, 0, -0.62), Vector3(1.38, 0, 0.62)],
-"rotations": [Vector3(0, 180, 0), Vector3(0, 180, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+"offsets": [Vector3(-1.36, 0, 0), Vector3(1.36, 0, 0), Vector3(0, 0, -0.94), Vector3(0, 0, 0.94)],
+"rotations": [Vector3(0, 90, 0), Vector3(0, -90, 0), Vector3(0, 180, 0), Vector3(0, 0, 0)],
+"sizes": [Vector3(0.92, 0.92, 0.92), Vector3(0.92, 0.92, 0.92), Vector3(0.92, 0.92, 0.92), Vector3(0.92, 0.92, 0.92)]
 },
 "show_disconnected_inputs": false,
 "template": "point_offsets"
+}, {
+"args_port": {},
+"name": "select_table_seats",
+"position": Vector2(1370, -100),
+"settings": {
+"random_seed": 1751,
+"ratio": 0.75
+},
+"show_disconnected_inputs": false,
+"template": "select_points"
 }, {
 "args_port": {},
 "name": "spawn_seats",
@@ -412,25 +600,47 @@ data = {
 "settings": {
 "random_seed": 1701,
 "randomize_scene_variants": true,
-"scene_variant_weights": [3.0, 1.0],
+"scene_variant_weights": [4.0, 0.8],
 "scene_variants": [ExtResource("16_pvwxj"), ExtResource("17_2xhk4")]
 },
 "show_disconnected_inputs": false,
 "template": "spawn_scenes"
 }, {
 "args_port": {},
+"name": "subtract_table_rooms",
+"position": Vector2(160, 400),
+"settings": {
+"operation": 0
+},
+"show_disconnected_inputs": false,
+"template": "substract"
+}, {
+"args_port": {},
 "name": "select_bed_rooms",
-"position": Vector2(300, 760),
+"position": Vector2(600, 760),
 "settings": {
 "random_seed": 1801,
-"ratio": 0.09
+"ratio": 0.25
 },
 "show_disconnected_inputs": false,
 "template": "select_points"
 }, {
 "args_port": {},
+"name": "bed_wall_slots",
+"position": Vector2(400, 760),
+"settings": {
+"inherit_anchor_size": false,
+"labels": ["bed_slot", "bed_slot", "bed_slot", "bed_slot"],
+"offsets": [Vector3(-0.36, 0, 0), Vector3(0.36, 0, 0), Vector3(0, 0, -0.36), Vector3(0, 0, 0.36)],
+"rotations": [Vector3(0, 0, 0), Vector3(0, 180, 0), Vector3(0, 90, 0), Vector3(0, -90, 0)],
+"scale_offsets_by_anchor_size": true
+},
+"show_disconnected_inputs": false,
+"template": "point_offsets"
+}, {
+"args_port": {},
 "name": "bed_unit_size",
-"position": Vector2(600, 760),
+"position": Vector2(800, 760),
 "settings": {
 "bounds_max": Vector3(0.5, 0.5, 0.5),
 "bounds_min": Vector3(-0.5, -0.5, -0.5)
@@ -440,7 +650,7 @@ data = {
 }, {
 "args_port": {},
 "name": "bed_offsets",
-"position": Vector2(900, 760),
+"position": Vector2(1000, 760),
 "settings": {
 "labels": ["bed"],
 "offsets": [Vector3(-0.36, 0, 0), Vector3(0.36, 0, 0), Vector3(0, 0, -0.36), Vector3(0, 0, 0.36)],
@@ -463,18 +673,40 @@ data = {
 "template": "spawn_scenes"
 }, {
 "args_port": {},
+"name": "subtract_bed_rooms",
+"position": Vector2(400, 880),
+"settings": {
+"operation": 0
+},
+"show_disconnected_inputs": false,
+"template": "substract"
+}, {
+"args_port": {},
+"name": "storage_wall_slots",
+"position": Vector2(400, 960),
+"settings": {
+"inherit_anchor_size": false,
+"labels": ["storage_slot", "storage_slot", "storage_slot", "storage_slot"],
+"offsets": [Vector3(-0.38, 0, 0), Vector3(0.38, 0, 0), Vector3(0, 0, -0.38), Vector3(0, 0, 0.38)],
+"rotations": [Vector3(0, 90, 0), Vector3(0, -90, 0), Vector3(0, 180, 0), Vector3(0, 0, 0)],
+"scale_offsets_by_anchor_size": true
+},
+"show_disconnected_inputs": false,
+"template": "point_offsets"
+}, {
+"args_port": {},
 "name": "select_storage_rooms",
-"position": Vector2(300, 960),
+"position": Vector2(600, 960),
 "settings": {
 "random_seed": 2001,
-"ratio": 0.2
+"ratio": 0.55
 },
 "show_disconnected_inputs": false,
 "template": "select_points"
 }, {
 "args_port": {},
 "name": "storage_unit_size",
-"position": Vector2(600, 960),
+"position": Vector2(800, 960),
 "settings": {
 "bounds_max": Vector3(0.5, 0.5, 0.5),
 "bounds_min": Vector3(-0.5, -0.5, -0.5)
@@ -484,15 +716,24 @@ data = {
 }, {
 "args_port": {},
 "name": "storage_offsets",
-"position": Vector2(900, 960),
+"position": Vector2(1000, 960),
 "settings": {
-"labels": ["storage", "storage"],
-"offsets": [Vector3(-0.32, 0, -0.32), Vector3(0.32, 0, -0.32), Vector3(-0.32, 0, 0.32), Vector3(0.32, 0, 0.32), Vector3(-0.32, 0, 0), Vector3(0.32, 0, 0), Vector3(0, 0, -0.32), Vector3(0, 0, 0.32)],
-"rotations": [Vector3(0, 45, 0), Vector3(0, -45, 0), Vector3(0, 135, 0), Vector3(0, -135, 0), Vector3(0, 90, 0), Vector3(0, -90, 0), Vector3(0, 0, 0), Vector3(0, 180, 0)],
-"scale_offsets_by_anchor_size": true
+"labels": ["storage"],
+"offsets": [Vector3(0, 0, 0)],
+"rotations": [Vector3(0, 0, 0)],
+"sizes": [Vector3(0.9, 0.9, 0.9)]
 },
 "show_disconnected_inputs": false,
 "template": "point_offsets"
+}, {
+"args_port": {},
+"name": "prune_storage",
+"position": Vector2(1100, 960),
+"settings": {
+"keep_self_intersections": false
+},
+"show_disconnected_inputs": false,
+"template": "self_pruning"
 }, {
 "args_port": {},
 "name": "spawn_storage",
@@ -507,18 +748,27 @@ data = {
 "template": "spawn_scenes"
 }, {
 "args_port": {},
+"name": "subtract_storage_rooms",
+"position": Vector2(400, 1080),
+"settings": {
+"operation": 0
+},
+"show_disconnected_inputs": false,
+"template": "substract"
+}, {
+"args_port": {},
 "name": "select_treasure_rooms",
-"position": Vector2(300, 1160),
+"position": Vector2(600, 1160),
 "settings": {
 "random_seed": 2201,
-"ratio": 0.28
+"ratio": 0.35
 },
 "show_disconnected_inputs": false,
 "template": "select_points"
 }, {
 "args_port": {},
 "name": "treasure_unit_size",
-"position": Vector2(600, 1160),
+"position": Vector2(800, 1160),
 "settings": {
 "bounds_max": Vector3(0.5, 0.5, 0.5),
 "bounds_min": Vector3(-0.5, -0.5, -0.5)
@@ -528,13 +778,13 @@ data = {
 }, {
 "args_port": {},
 "name": "treasure_offsets",
-"position": Vector2(900, 1160),
+"position": Vector2(1000, 1160),
 "settings": {
 "labels": ["treasure"],
-"offsets": [Vector3(0.34, 0, 0.34), Vector3(-0.34, 0, 0.28)],
-"rotations": [Vector3(0, 35, 0), Vector3(0, -25, 0)],
+"offsets": [Vector3(0.36, 0, 0.34)],
+"rotations": [Vector3(0, 35, 0)],
 "scale_offsets_by_anchor_size": true,
-"sizes": [Vector3(0.8, 0.8, 0.8), Vector3(0.75, 0.75, 0.75)]
+"sizes": [Vector3(0.72, 0.72, 0.72)]
 },
 "show_disconnected_inputs": false,
 "template": "point_offsets"
@@ -552,77 +802,128 @@ data = {
 "template": "spawn_scenes"
 }, {
 "args_port": {},
-"name": "table_room_slots",
-"position": Vector2(160, 80),
+"name": "corner_slots",
+"position": Vector2(160, 1380),
 "settings": {
-"inherit_anchor_size": false,
-"labels": ["table_slot", "table_slot", "table_slot", "table_slot", "table_slot"],
-"offsets": [Vector3(0, 0, 0), Vector3(-0.18, 0, -0.18), Vector3(0.18, 0, -0.18), Vector3(-0.18, 0, 0.18), Vector3(0.18, 0, 0.18)],
-"rotations": [Vector3(0, 0, 0), Vector3(0, 90, 0), Vector3(0, -90, 0), Vector3(0, 180, 0), Vector3(0, 0, 0)],
-"scale_offsets_by_anchor_size": true
+"labels": ["corner", "corner", "corner", "corner"],
+"offsets": [Vector3(0.42, 0, 0.42), Vector3(-0.42, 0, 0.42), Vector3(0.42, 0, -0.42), Vector3(-0.42, 0, -0.42)],
+"rotations": [Vector3(0, 45, 0), Vector3(0, 135, 0), Vector3(0, -45, 0), Vector3(0, -135, 0)],
+"scale_offsets_by_anchor_size": true,
+"sizes": [Vector3(0.7, 1.0, 0.7), Vector3(0.7, 1.0, 0.7), Vector3(0.7, 1.0, 0.7), Vector3(0.7, 1.0, 0.7)]
 },
 "show_disconnected_inputs": false,
 "template": "point_offsets"
 }, {
 "args_port": {},
-"name": "storage_wall_slots",
-"position": Vector2(160, 960),
+"name": "select_corners",
+"position": Vector2(400, 1380),
 "settings": {
-"inherit_anchor_size": false,
-"labels": ["storage_slot", "storage_slot", "storage_slot", "storage_slot", "storage_slot", "storage_slot", "storage_slot", "storage_slot"],
-"offsets": [Vector3(-0.32, 0, -0.32), Vector3(0.32, 0, -0.32), Vector3(-0.32, 0, 0.32), Vector3(0.32, 0, 0.32), Vector3(-0.32, 0, 0), Vector3(0.32, 0, 0), Vector3(0, 0, -0.32), Vector3(0, 0, 0.32)],
-"rotations": [Vector3(0, 45, 0), Vector3(0, -45, 0), Vector3(0, 135, 0), Vector3(0, -135, 0), Vector3(0, 90, 0), Vector3(0, -90, 0), Vector3(0, 0, 0), Vector3(0, 180, 0)],
-"scale_offsets_by_anchor_size": true
-},
-"show_disconnected_inputs": false,
-"template": "point_offsets"
-}, {
-"args_port": {},
-"name": "bed_wall_slots",
-"position": Vector2(160, 760),
-"settings": {
-"inherit_anchor_size": false,
-"labels": ["bed_slot", "bed_slot", "bed_slot", "bed_slot"],
-"offsets": [Vector3(-0.36, 0, 0), Vector3(0.36, 0, 0), Vector3(0, 0, -0.36), Vector3(0, 0, 0.36)],
-"rotations": [Vector3(0, 0, 0), Vector3(0, 180, 0), Vector3(0, 90, 0), Vector3(0, -90, 0)],
-"scale_offsets_by_anchor_size": true
-},
-"show_disconnected_inputs": false,
-"template": "point_offsets"
-}, {
-"args_port": {},
-"name": "select_table_plates",
-"position": Vector2(1370, 260),
-"settings": {
-"random_seed": 1351,
-"ratio": 0.65
+"random_seed": 2651,
+"ratio": 0.50
 },
 "show_disconnected_inputs": false,
 "template": "select_points"
 }, {
 "args_port": {},
-"name": "select_table_seats",
-"position": Vector2(1370, -100),
+"name": "corner_size",
+"position": Vector2(600, 1380),
 "settings": {
-"random_seed": 1751,
-"ratio": 0.75
+"bounds_max": Vector3(0.6, 0.5, 0.6),
+"bounds_min": Vector3(-0.6, -0.5, -0.6)
+},
+"show_disconnected_inputs": false,
+"template": "bounds_modifier"
+}, {
+"args_port": {},
+"name": "prune_corners",
+"position": Vector2(800, 1380),
+"settings": {
+"keep_self_intersections": false
+},
+"show_disconnected_inputs": false,
+"template": "self_pruning"
+}, {
+"args_port": {},
+"name": "spawn_corners",
+"position": Vector2(1000, 1380),
+"settings": {
+"random_seed": 2661,
+"randomize_scene_variants": true,
+"scene_variant_weights": [0.8, 1.0, 0.6, 0.7, 0.5, 0.9, 0.4],
+"scene_variants": [ExtResource("38_colmn"), ExtResource("21_s7yth"), ExtResource("44_brldec"), ExtResource("39_trnka"), ExtResource("40_trnkb"), ExtResource("24_uegej"), ExtResource("41_rubbl")]
+},
+"show_disconnected_inputs": false,
+"template": "spawn_scenes"
+}, {
+"args_port": {},
+"name": "wall_storage_slots",
+"position": Vector2(160, 1580),
+"settings": {
+"combine_rotation": true,
+"labels": ["wall_storage", "wall_storage", "wall_storage", "wall_storage"],
+"local_space": true,
+"offsets": [Vector3(0.45, 0, 0), Vector3(-0.45, 0, 0), Vector3(0, 0, 0.45), Vector3(0, 0, -0.45)],
+"rotations": [Vector3(0, 90, 0), Vector3(0, -90, 0), Vector3(0, 0, 0), Vector3(0, 180, 0)],
+"scale_offsets_by_anchor_size": true,
+"sizes": [Vector3(0.8, 1.0, 0.5), Vector3(0.8, 1.0, 0.5), Vector3(0.8, 1.0, 0.5), Vector3(0.8, 1.0, 0.5)]
+},
+"show_disconnected_inputs": false,
+"template": "point_offsets"
+}, {
+"args_port": {},
+"name": "select_wall_storage",
+"position": Vector2(400, 1580),
+"settings": {
+"random_seed": 2611,
+"ratio": 0.40
 },
 "show_disconnected_inputs": false,
 "template": "select_points"
+}, {
+"args_port": {},
+"name": "wall_storage_size",
+"position": Vector2(600, 1580),
+"settings": {
+"bounds_max": Vector3(0.8, 0.5, 0.4),
+"bounds_min": Vector3(-0.8, -0.5, -0.4)
+},
+"show_disconnected_inputs": false,
+"template": "bounds_modifier"
+}, {
+"args_port": {},
+"name": "prune_wall_storage",
+"position": Vector2(800, 1580),
+"settings": {
+"keep_self_intersections": false
+},
+"show_disconnected_inputs": false,
+"template": "self_pruning"
+}, {
+"args_port": {},
+"name": "spawn_wall_storage",
+"position": Vector2(1000, 1580),
+"settings": {
+"random_seed": 2621,
+"randomize_scene_variants": true,
+"scene_variant_weights": [1.2, 1.0, 0.8, 0.7, 0.9],
+"scene_variants": [ExtResource("26_3q2wd"), ExtResource("42_shlvs"), ExtResource("44_brldec"), ExtResource("43_keg01"), ExtResource("25_3hrt5")]
+},
+"show_disconnected_inputs": false,
+"template": "spawn_scenes"
 }, {
 "args_port": {},
 "name": "select_clutter_rooms",
-"position": Vector2(300, 1380),
+"position": Vector2(300, 1800),
 "settings": {
 "random_seed": 2401,
-"ratio": 0.9
+"ratio": 0.85
 },
 "show_disconnected_inputs": false,
 "template": "select_points"
 }, {
 "args_port": {},
 "name": "clutter_unit_size",
-"position": Vector2(600, 1380),
+"position": Vector2(500, 1800),
 "settings": {
 "bounds_max": Vector3(0.5, 0.5, 0.5),
 "bounds_min": Vector3(-0.5, -0.5, -0.5)
@@ -632,35 +933,54 @@ data = {
 }, {
 "args_port": {},
 "name": "clutter_offsets",
-"position": Vector2(900, 1380),
+"position": Vector2(700, 1800),
 "settings": {
 "labels": ["clutter", "clutter", "clutter", "clutter", "clutter", "clutter"],
-"offsets": [Vector3(-0.32, 0, -0.14), Vector3(0.32, 0, 0.14), Vector3(-0.16, 0, 0.32), Vector3(0.16, 0, -0.32), Vector3(-0.3, 0, 0.3), Vector3(0.3, 0, -0.3)],
-"rotations": [Vector3(0, 0, 0), Vector3(0, 60, 0), Vector3(0, 130, 0), Vector3(0, 210, 0), Vector3(0, 280, 0), Vector3(0, 320, 0)],
+"offsets": [Vector3(-0.40, 0, -0.40), Vector3(0.40, 0, -0.40), Vector3(-0.40, 0, 0.40), Vector3(0.40, 0, 0.40), Vector3(-0.25, 0, 0), Vector3(0.25, 0, 0)],
+"rotations": [Vector3(0, 45, 0), Vector3(0, -45, 0), Vector3(0, 135, 0), Vector3(0, -135, 0), Vector3(0, 90, 0), Vector3(0, -90, 0)],
 "scale_offsets_by_anchor_size": true,
-"sizes": [Vector3(0.75, 0.75, 0.75), Vector3(0.7, 0.7, 0.7), Vector3(0.85, 0.85, 0.85), Vector3(0.8, 0.8, 0.8), Vector3(0.65, 0.65, 0.65), Vector3(0.7, 0.7, 0.7)]
+"sizes": [Vector3(0.85, 1.0, 0.85), Vector3(0.85, 1.0, 0.85), Vector3(0.85, 1.0, 0.85), Vector3(0.85, 1.0, 0.85), Vector3(0.85, 1.0, 0.85), Vector3(0.85, 1.0, 0.85)]
 },
 "show_disconnected_inputs": false,
 "template": "point_offsets"
 }, {
 "args_port": {},
-"name": "jitter_clutter",
-"position": Vector2(1200, 1380),
+"name": "select_clutter_slots",
+"position": Vector2(900, 1800),
 "settings": {
-"offset_max": Vector3(0.35, 0, 0.35),
-"offset_min": Vector3(-0.35, 0, -0.35),
-"rotation_max": Vector3(0, 360, 0),
+"random_seed": 2451,
+"ratio": 0.50
+},
+"show_disconnected_inputs": false,
+"template": "select_points"
+}, {
+"args_port": {},
+"name": "jitter_clutter",
+"position": Vector2(1100, 1800),
+"settings": {
+"offset_max": Vector3(0.08, 0, 0.08),
+"offset_min": Vector3(-0.08, 0, -0.08),
+"rotation_max": Vector3(0, 180, 0),
 "rotation_min": Vector3(0, 0, 0),
-"scale_max": Vector3(1.08, 1.08, 1.08),
-"scale_min": Vector3(0.75, 0.75, 0.75),
+"scale_max": Vector3(1.02, 1.02, 1.02),
+"scale_min": Vector3(0.82, 0.82, 0.82),
 "uniform_scale": true
 },
 "show_disconnected_inputs": false,
 "template": "transform"
 }, {
 "args_port": {},
+"name": "prune_clutter",
+"position": Vector2(1300, 1800),
+"settings": {
+"keep_self_intersections": false
+},
+"show_disconnected_inputs": false,
+"template": "self_pruning"
+}, {
+"args_port": {},
 "name": "spawn_clutter",
-"position": Vector2(1500, 1380),
+"position": Vector2(1500, 1800),
 "settings": {
 "random_seed": 2501,
 "randomize_scene_variants": true,
@@ -669,10 +989,68 @@ data = {
 },
 "show_disconnected_inputs": false,
 "template": "spawn_scenes"
+}, {
+"args_port": {},
+"name": "floor_detail_slots",
+"position": Vector2(160, 2020),
+"settings": {
+"labels": ["rubble", "rubble", "rubble", "rubble", "rubble", "rubble"],
+"offsets": [Vector3(0.2, 0, 0.15), Vector3(-0.18, 0, 0.22), Vector3(0.25, 0, -0.2), Vector3(-0.22, 0, -0.18), Vector3(0.1, 0, 0.35), Vector3(-0.3, 0, 0.05)],
+"scale_offsets_by_anchor_size": true,
+"sizes": [Vector3(0.4, 0.2, 0.4), Vector3(0.4, 0.2, 0.4), Vector3(0.4, 0.2, 0.4), Vector3(0.4, 0.2, 0.4), Vector3(0.4, 0.2, 0.4), Vector3(0.4, 0.2, 0.4)]
+},
+"show_disconnected_inputs": false,
+"template": "point_offsets"
+}, {
+"args_port": {},
+"name": "select_floor_detail",
+"position": Vector2(400, 2020),
+"settings": {
+"random_seed": 2701,
+"ratio": 0.25
+},
+"show_disconnected_inputs": false,
+"template": "select_points"
+}, {
+"args_port": {},
+"name": "jitter_floor_detail",
+"position": Vector2(600, 2020),
+"settings": {
+"offset_max": Vector3(0.1, 0, 0.1),
+"offset_min": Vector3(-0.1, 0, -0.1),
+"rotation_max": Vector3(0, 360, 0),
+"rotation_min": Vector3(0, 0, 0),
+"scale_max": Vector3(1.1, 1.1, 1.1),
+"scale_min": Vector3(0.8, 0.8, 0.8),
+"uniform_scale": true
+},
+"show_disconnected_inputs": false,
+"template": "transform"
+}, {
+"args_port": {},
+"name": "prune_floor_detail",
+"position": Vector2(800, 2020),
+"settings": {
+"keep_self_intersections": false
+},
+"show_disconnected_inputs": false,
+"template": "self_pruning"
+}, {
+"args_port": {},
+"name": "spawn_floor_detail",
+"position": Vector2(1000, 2020),
+"settings": {
+"random_seed": 2711,
+"randomize_scene_variants": true,
+"scene_variant_weights": [0.8, 0.3, 0.6, 0.7, 0.4, 0.5],
+"scene_variants": [ExtResource("45_rubhf"), ExtResource("47_coin1"), ExtResource("33_dd5eb"), ExtResource("34_4i8pr"), ExtResource("46_torch"), ExtResource("30_a8481")]
+},
+"show_disconnected_inputs": false,
+"template": "spawn_scenes"
 }],
 "type": "flow_graph_nodes",
 "version": 1
 }
-view_zoom = 0.45
-new_name_counter = 26
+view_zoom = 0.35
+new_name_counter = 55
 in_params = Array[ExtResource("30_s3gcd")]([SubResource("Resource_jfvob")])

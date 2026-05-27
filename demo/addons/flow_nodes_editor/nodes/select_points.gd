@@ -76,6 +76,9 @@ func weighted_sampling(weights: PackedFloat32Array, k: int, rng: RandomNumberGen
 
 func execute( ctx : FlowData.EvaluationContext ):
 	var in_data : FlowData.Data = get_input(0)
+	if in_data == null:
+		setError("Input 'In' is not connected")
+		return
 	#in_data.dump( "Select.Input")
 	var in_size := in_data.size()
 	

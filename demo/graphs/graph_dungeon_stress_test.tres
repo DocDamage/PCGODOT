@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://j6vjeb5cjjoy" path="res://addons/flow_nodes_editor/flow_graph_resource.gd" id="8_wiskw"]
 [ext_resource type="Resource" uid="uid://cpjh6me0pea2p" path="res://graphs/subgraph_dungeon_upper_level.tres" id="8_woyq1"]
 [ext_resource type="Resource" uid="uid://dmnrde4bnuvg0" path="res://graphs/subgraph_dungeon_wall_decor.tres" id="9_ysciv"]
+[ext_resource type="PackedScene" uid="uid://bwap6a5lxsuas" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/wall_doorway.glb" id="12_dway1"]
+[ext_resource type="PackedScene" uid="uid://dji6df6muod7a" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/wall_doorway_scaffold.glb" id="13_dway2"]
 
 [resource]
 script = ExtResource("8_wiskw")
@@ -116,7 +118,67 @@ data = {
 "from_node": &"corridor_cells",
 "from_port": 0,
 "keep_alive": false,
+"to_node": &"corridor_floor_style",
+"to_port": 0
+}, {
+"from_node": &"corridor_floor_style",
+"from_port": 0,
+"keep_alive": false,
 "to_node": &"merge_floor_cells",
+"to_port": 0
+}, {
+"from_node": &"room_floor_cells",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"room_boundary",
+"to_port": 0
+}, {
+"from_node": &"corridor_floor_style",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"corridor_only_cells",
+"to_port": 0
+}, {
+"from_node": &"room_floor_cells",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"corridor_only_cells",
+"to_port": 1
+}, {
+"from_node": &"corridor_only_cells",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"corridor_boundary",
+"to_port": 0
+}, {
+"from_node": &"room_boundary",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"corridor_door_edges",
+"to_port": 0
+}, {
+"from_node": &"corridor_boundary",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"corridor_door_edges",
+"to_port": 1
+}, {
+"from_node": &"corridor_door_edges",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"orient_door_edges",
+"to_port": 0
+}, {
+"from_node": &"orient_door_edges",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"door_unit_size",
+"to_port": 0
+}, {
+"from_node": &"door_unit_size",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"spawn_corridor_doors",
 "to_port": 0
 }, {
 "from_node": &"merge_floor_cells",
@@ -227,18 +289,6 @@ data = {
 "to_node": &"select_chest_rooms",
 "to_port": 0
 }, {
-"from_node": &"room_style",
-"from_port": 0,
-"keep_alive": false,
-"to_node": &"sub_dressing",
-"to_port": 0
-}, {
-"from_node": &"room_style",
-"from_port": 0,
-"keep_alive": false,
-"to_node": &"sub_upper_level",
-"to_port": 0
-}, {
 "from_node": &"select_chest_rooms",
 "from_port": 0,
 "keep_alive": false,
@@ -257,18 +307,6 @@ data = {
 "to_node": &"chest_unit_size",
 "to_port": 0
 }, {
-"from_node": &"grid_boundary",
-"from_port": 0,
-"keep_alive": false,
-"to_node": &"sub_wall_decor",
-"to_port": 0
-}, {
-"from_node": &"set_type_wall",
-"from_port": 0,
-"keep_alive": false,
-"to_node": &"sub_wall",
-"to_port": 0
-}, {
 "from_node": &"pillar_unit_size",
 "from_port": 0,
 "keep_alive": false,
@@ -280,6 +318,31 @@ data = {
 "keep_alive": false,
 "to_node": &"sub_floor",
 "to_port": 0
+}, {
+"from_node": &"room_style",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"sub_dressing",
+"to_port": 0
+}, {
+"from_node": &"room_style",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"sub_upper_level",
+"to_port": 0
+}, {
+"from_node": &"set_type_wall",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"sub_wall",
+"to_port": 0
+}, {
+"from_node": &"grid_boundary",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"sub_wall_decor",
+"to_port": 0
+}, {
 }],
 "min_pos": Vector2(0, 240),
 "nodes": [{
@@ -298,7 +361,7 @@ data = {
 "disabled": false,
 "inspect_enabled": false,
 "random_seed": 845376717,
-"size": Vector3(56, 1, 56),
+"size": Vector3(120, 1, 120),
 "title": "Make Bounds",
 "trace": false
 },
@@ -323,7 +386,7 @@ data = {
 "debug_scale": 1.0,
 "disabled": false,
 "inspect_enabled": false,
-"num_points": 28,
+"num_points": 80,
 "point_size": Vector3(1, 1, 1),
 "random_seed": 12031,
 "title": "Surface Sampler",
@@ -381,7 +444,7 @@ data = {
 "debug_scale": 1.0,
 "disabled": false,
 "inspect_enabled": false,
-"max_value": 3.0,
+"max_value": 5.0,
 "min_value": 1.0,
 "random_seed": 23011,
 "title": "Attribute Random",
@@ -510,7 +573,7 @@ data = {
 "debug_scale": 1.0,
 "disabled": false,
 "inspect_enabled": false,
-"max_value": 3.0,
+"max_value": 5.0,
 "min_value": 1.0,
 "random_seed": 23047,
 "title": "Attribute Random",
@@ -1033,7 +1096,7 @@ data = {
 "disabled": false,
 "inspect_enabled": false,
 "random_seed": 19237,
-"ratio": 0.28,
+"ratio": 0.42,
 "title": "Select Points",
 "trace": false,
 "weight_name": ""
@@ -1293,7 +1356,7 @@ data = {
 "disabled": false,
 "inspect_enabled": false,
 "random_seed": 19501,
-"ratio": 0.25,
+"ratio": 0.35,
 "title": "Select Points",
 "trace": false,
 "weight_name": ""
@@ -1310,8 +1373,8 @@ data = {
 "name": &"floor_unit_size",
 "position": Vector2(6520, 1020),
 "settings": {
-"bounds_max": Vector3(0.515, 0.5, 0.515),
-"bounds_min": Vector3(-0.515, -0.5, -0.515),
+"bounds_max": Vector3(0.52, 0.5, 0.52),
+"bounds_min": Vector3(-0.52, -0.5, -0.52),
 "debug_bulk": 0,
 "debug_color": Color(1, 1, 1, 1),
 "debug_enabled": false,
@@ -1505,33 +1568,6 @@ data = {
 "template": "grid_boundary"
 }, {
 "args_port": {
-"In": {
-"connected": true,
-"port": 0
-}
-},
-"name": &"select_torch_walls",
-"position": Vector2(6840, 620),
-"settings": {
-"debug_bulk": 0,
-"debug_color": Color(1, 1, 1, 1),
-"debug_enabled": false,
-"debug_mode": 0,
-"debug_modulate_by": "",
-"debug_output": 0,
-"debug_scale": 1.0,
-"disabled": false,
-"inspect_enabled": false,
-"random_seed": 8123,
-"ratio": 0.08,
-"title": "Select Points",
-"trace": false,
-"weight_name": ""
-},
-"show_disconnected_inputs": false,
-"template": "select_points"
-}, {
-"args_port": {
 "points": {
 "connected": true,
 "port": 0
@@ -1582,10 +1618,285 @@ data = {
 },
 "show_disconnected_inputs": false,
 "template": "subgraph"
+}, {
+"args_port": {
+"In": {
+"connected": true,
+"port": 0
+}
+},
+"name": &"select_torch_walls",
+"position": Vector2(6840, 620),
+"settings": {
+"debug_bulk": 0,
+"debug_color": Color(1, 1, 1, 1),
+"debug_enabled": false,
+"debug_mode": 0,
+"debug_modulate_by": "",
+"debug_output": 0,
+"debug_scale": 1.0,
+"disabled": false,
+"inspect_enabled": false,
+"random_seed": 8123,
+"ratio": 0.18,
+"title": "Select Points",
+"trace": false,
+"weight_name": ""
+},
+"show_disconnected_inputs": false,
+"template": "select_points"
+}, {
+"args_port": {
+"In": {
+"connected": true,
+"port": 0
+}
+},
+"name": &"corridor_floor_style",
+"position": Vector2(5420, 320),
+"settings": {
+"cte_bool": false,
+"cte_color": Color(1, 1, 1, 1),
+"cte_float": 0.0,
+"cte_int": 0,
+"cte_resource": null,
+"cte_string": "",
+"cte_vector": Vector3(0, 0, 0),
+"data_type": 2,
+"debug_bulk": 0,
+"debug_color": Color(1, 1, 1, 1),
+"debug_enabled": false,
+"debug_mode": 0,
+"debug_modulate_by": "",
+"debug_output": 0,
+"debug_scale": 1.0,
+"disabled": false,
+"inspect_enabled": false,
+"name": "room_style",
+"random_seed": 258639929,
+"title": "Corridor Floor Style",
+"trace": false
+},
+"show_disconnected_inputs": false,
+"template": "add_attribute"
+}, {
+"args_port": {
+"Filled Cells": {
+"connected": true,
+"port": 0
+}
+},
+"name": &"room_boundary",
+"position": Vector2(5700, 900),
+"settings": {
+"cell_size": Vector3(4, 1, 4),
+"debug_bulk": 0,
+"debug_color": Color(1, 1, 1, 1),
+"debug_enabled": false,
+"debug_mode": 0,
+"debug_modulate_by": "",
+"debug_output": 0,
+"debug_scale": 1.0,
+"disabled": false,
+"include_corners": false,
+"inspect_enabled": false,
+"normal_attribute": "boundary_normal",
+"random_seed": 2455492646,
+"title": "Room Boundary",
+"trace": false,
+"type_attribute": "boundary_type",
+"wall_height": 1.0,
+"wall_thickness": 1.0
+},
+"show_disconnected_inputs": false,
+"template": "grid_boundary"
+}, {
+"args_port": {
+"In A": {
+"connected": true,
+"port": 0
+},
+"In B": {
+"connected": true,
+"port": 1
+}
+},
+"name": &"corridor_only_cells",
+"position": Vector2(5700, 350),
+"settings": {
+"debug_bulk": 0,
+"debug_color": Color(1, 1, 1, 1),
+"debug_enabled": false,
+"debug_mode": 0,
+"debug_modulate_by": "",
+"debug_output": 0,
+"debug_scale": 1.0,
+"disabled": false,
+"inspect_enabled": false,
+"operation": 0,
+"random_seed": 123456789,
+"title": "Corridor Only Cells",
+"trace": false
+},
+"show_disconnected_inputs": false,
+"template": "substract"
+}, {
+"args_port": {
+"Filled Cells": {
+"connected": true,
+"port": 0
+}
+},
+"name": &"corridor_boundary",
+"position": Vector2(6000, 350),
+"settings": {
+"cell_size": Vector3(4, 1, 4),
+"debug_bulk": 0,
+"debug_color": Color(1, 1, 1, 1),
+"debug_enabled": false,
+"debug_mode": 0,
+"debug_modulate_by": "",
+"debug_output": 0,
+"debug_scale": 1.0,
+"disabled": false,
+"include_corners": false,
+"inspect_enabled": false,
+"normal_attribute": "boundary_normal",
+"random_seed": 2455492647,
+"title": "Corridor Boundary",
+"trace": false,
+"type_attribute": "boundary_type",
+"wall_height": 1.0,
+"wall_thickness": 1.0
+},
+"show_disconnected_inputs": false,
+"template": "grid_boundary"
+}, {
+"args_port": {
+"In A": {
+"connected": true,
+"port": 0
+},
+"In B": {
+"connected": true,
+"port": 1
+}
+},
+"name": &"corridor_door_edges",
+"position": Vector2(6300, 350),
+"settings": {
+"debug_bulk": 0,
+"debug_color": Color(1, 1, 1, 1),
+"debug_enabled": false,
+"debug_mode": 0,
+"debug_modulate_by": "",
+"debug_output": 0,
+"debug_scale": 1.0,
+"disabled": false,
+"inspect_enabled": false,
+"operation": 1,
+"random_seed": 987654321,
+"title": "Corridor Door Edges",
+"trace": false
+},
+"show_disconnected_inputs": false,
+"template": "substract"
+}, {
+"args_port": {
+"In": {
+"connected": true,
+"port": 0
+}
+},
+"name": &"orient_door_edges",
+"position": Vector2(6600, 350),
+"settings": {
+"axis": "z",
+"debug_bulk": 0,
+"debug_color": Color(1, 1, 1, 1),
+"debug_enabled": false,
+"debug_mode": 0,
+"debug_modulate_by": "",
+"debug_output": 0,
+"debug_scale": 1.0,
+"disabled": false,
+"inspect_enabled": false,
+"random_seed": 2371002972,
+"title": "Orient Door Edges",
+"trace": false,
+"up_vector_attribute": "boundary_normal",
+"up_vector_constant": Vector3(0, 1, 0),
+"use_constant": false
+},
+"show_disconnected_inputs": false,
+"template": "build_rotation_from_up"
+}, {
+"args_port": {
+"In": {
+"connected": true,
+"port": 0
+}
+},
+"name": &"door_unit_size",
+"position": Vector2(6900, 350),
+"settings": {
+"bounds_max": Vector3(0.5, 0.5, 0.5),
+"bounds_min": Vector3(-0.5, -0.5, -0.5),
+"debug_bulk": 0,
+"debug_color": Color(1, 1, 1, 1),
+"debug_enabled": false,
+"debug_mode": 0,
+"debug_modulate_by": "",
+"debug_output": 0,
+"debug_scale": 1.0,
+"disabled": false,
+"inspect_enabled": false,
+"mode": 0,
+"random_seed": 1687564696,
+"title": "Door Unit Size",
+"trace": false
+},
+"show_disconnected_inputs": false,
+"template": "bounds_modifier"
+}, {
+"args_port": {
+"In": {
+"connected": true,
+"port": 0
+}
+},
+"name": &"spawn_corridor_doors",
+"position": Vector2(7200, 350),
+"settings": {
+"assign_attributes": {},
+"assign_target_path": "",
+"clear_previous_instances": true,
+"debug_bulk": 0,
+"debug_color": Color(1, 1, 1, 1),
+"debug_enabled": false,
+"debug_mode": 0,
+"debug_modulate_by": "",
+"debug_output": 0,
+"debug_scale": 1.0,
+"disabled": false,
+"inspect_enabled": false,
+"random_seed": 9501,
+"randomize_scene_variants": true,
+"scene": null,
+"scene_attribute": "",
+"scene_selector_attribute": "",
+"scene_variant_weights": Array[float]([1.0, 0.55]),
+"scene_variants": Array[PackedScene]([ExtResource("12_dway1"), ExtResource("13_dway2")]),
+"spawn_parent_path": "",
+"title": "Spawn Corridor Doors",
+"trace": false
+},
+"show_disconnected_inputs": false,
+"template": "spawn_scenes"
 }],
 "type": "flow_graph_nodes",
 "version": 1
 }
-view_zoom = 0.37455305
-view_offset = Vector2(2373.9072, 17.83368)
-new_name_counter = 81
+view_zoom = 0.45320922
+view_offset = Vector2(2663.1646, 20.85498)
+new_name_counter = 83
