@@ -600,14 +600,22 @@ func _create_attribute_selector(node: GraphNode, settings: Object, prop_name: St
 	opt.add_item("(custom...)", custom_idx + 1)
 	
 	if stream_names.is_empty():
-		# No upstream data — show text field directly
-		opt.visible = false
+		opt.selected = opt.item_count - 1
+		opt.set_item_text(opt.item_count - 1, "(no attributes found)")
+		opt.disabled = true
+		opt.visible = true
 		le.visible = true
 	elif selected_idx >= 0:
 		opt.selected = selected_idx
+		opt.disabled = false
+		opt.set_item_text(opt.item_count - 1, "(custom...)")
+		opt.visible = true
+		le.visible = false
 	else:
-		# Current value not in dropdown — show as custom
-		opt.visible = false
+		opt.selected = opt.item_count - 1
+		opt.disabled = false
+		opt.set_item_text(opt.item_count - 1, "(custom...)")
+		opt.visible = true
 		le.visible = true
 	
 	opt.item_selected.connect(func(index):
@@ -619,6 +627,7 @@ func _create_attribute_selector(node: GraphNode, settings: Object, prop_name: St
 		else:
 			var chosen = opt.get_item_text(index)
 			le.visible = false
+			le.text = chosen
 			_on_value_changed(settings, prop_name, chosen)
 	)
 	
